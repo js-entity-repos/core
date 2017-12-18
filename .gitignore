@@ -1,0 +1,6 @@
+.DS_STORE
+/dist
+/node_modules
+/notes.md
+/npm-debug.log
+/yarn.lock
