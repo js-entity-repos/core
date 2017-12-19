@@ -3,7 +3,7 @@ import 'mocha'; // tslint:disable-line:no-import-side-effect
 import * as assert from 'power-assert';
 import MissingEntityError from '../../errors/MissingEntityError';
 import Facade from '../../Facade';
-import { TestEntity, testEntity, testId, TestId } from '../testEntity';
+import { TestEntity, testEntity, testId, TestId } from '../utils/testEntity';
 
 export default (facade: Facade<TestId, TestEntity>) => {
   describe('overwriteEntity', () => {

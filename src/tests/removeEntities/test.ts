@@ -1,23 +1,33 @@
-import * as assertRejects from 'assert-rejects';
 import 'mocha'; // tslint:disable-line:no-import-side-effect
-import MissingEntityError from '../../errors/MissingEntityError';
+import * as assert from 'power-assert';
 import Facade from '../../Facade';
-import Filter from '../../types/Filter';
-import { TestEntity, testEntity, testId, TestId } from '../testEntity';
+import Pagination from '../../types/Pagination';
+import Sort from '../../types/Sort';
+import filterTest, { firstEntity, secondEntity } from '../utils/filterTest';
+import { TestEntity, TestId } from '../utils/testEntity';
 
 export default (facade: Facade<TestId, TestEntity>) => {
   describe('removeEntities', () => {
-    it('should not error when there are no entities', async () => {
-      const filter: Filter<TestEntity> = {};
-      await facade.removeEntities({ filter });
-    });
+    const sort: Sort<TestEntity> = {};
+    const pagination: Pagination = { cursor: undefined, forward: true, limit: 2 };
 
-    it('should remove all entities when there are entities', async () => {
-      const filter: Filter<TestEntity> = {};
-      await facade.createEntity({ entity: testEntity });
-      await facade.removeEntities({ filter });
-      const promise = facade.getEntity({ id: testId });
-      await assertRejects(promise, MissingEntityError);
+    filterTest({
+      assertAllEntitiesFilter: async (filter) => {
+        await facade.removeEntities({ filter });
+        const actualResult = await facade.getEntities({ filter: {}, sort, pagination });
+        assert.deepEqual(actualResult.entities, []);
+      },
+      assertFirstEntityFilter: async (filter) => {
+        await facade.removeEntities({ filter });
+        const actualResult = await facade.getEntities({ filter: {}, sort, pagination });
+        assert.deepEqual(actualResult.entities, [secondEntity]);
+      },
+      assertNoEntityFilter: async (filter) => {
+        await facade.removeEntities({ filter });
+        const actualResult = await facade.getEntities({ filter: {}, sort, pagination });
+        assert.deepEqual(actualResult.entities, [firstEntity, secondEntity]);
+      },
+      facade,
     });
   });
 };

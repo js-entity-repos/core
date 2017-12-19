@@ -2,7 +2,7 @@ import * as assertRejects from 'assert-rejects';
 import 'mocha'; // tslint:disable-line:no-import-side-effect
 import ConflictingEntityError from '../../errors/ConflictingEntityError';
 import Facade from '../../Facade';
-import { TestEntity, testEntity, TestId } from '../testEntity';
+import { TestEntity, testEntity, TestId } from '../utils/testEntity';
 
 export default (facade: Facade<TestId, TestEntity>) => {
   describe('createEntity', () => {

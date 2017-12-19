@@ -23,7 +23,7 @@ export interface OrFilter<Entity> {
 }
 
 export interface NotFilter<Entity> {
-  readonly $not: Filter<Entity>[];
+  readonly $not: Filter<Entity>;
 }
 
 export type Filter<Entity> = (
