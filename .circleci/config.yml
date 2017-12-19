@@ -31,9 +31,6 @@ jobs:
           name: Compiling Code
           command: npm run build
       - run:
-          name: Running tests
-          command: npm run cover
-      - run:
           name: Linting Code
           command: npm run lint
       - run:
