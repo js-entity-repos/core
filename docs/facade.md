@@ -11,7 +11,7 @@ The facade contains common functions for storage and retrieval of entities from 
 - [removeEntities](#removeentities)
 - [removeEntity](#removeentity)
 
-The facade in this repository is a TypeScript interface, but concrete implementations of the interface include:
+The facade in this package is a TypeScript interface, but concrete implementations of the interface include:
 
 - [Memory](https://github.com/js-entity-repos/memory) - Coming Soon
 - [Mongo](https://github.com/js-entity-repos/memory) - Coming Soon
