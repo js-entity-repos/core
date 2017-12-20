@@ -1,3 +1,4 @@
+import 'mocha'; // tslint:disable-line:no-import-side-effect
 import Facade from '../Facade';
 import countEntitiesTest from './countEntities/test';
 import createEntityTest from './createEntity/test';
@@ -10,12 +11,18 @@ import removeEntityTest from './removeEntity/test';
 import { TestEntity, TestId } from './utils/testEntity';
 
 export default (facade: Facade<TestId, TestEntity>) => {
-  createEntityTest(facade);
-  getEntityTest(facade);
-  removeEntityTest(facade);
-  overwriteEntityTest(facade);
-  patchEntityTest(facade);
-  countEntitiesTest(facade);
-  getEntitiesTest(facade);
-  removeEntitiesTest(facade);
+  describe('entityFacade', () => {
+    beforeEach(async () => {
+      await facade.removeEntities({ filter: {} });
+    });
+
+    createEntityTest(facade);
+    getEntityTest(facade);
+    removeEntityTest(facade);
+    overwriteEntityTest(facade);
+    patchEntityTest(facade);
+    countEntitiesTest(facade);
+    getEntitiesTest(facade);
+    removeEntitiesTest(facade);
+  });
 };
