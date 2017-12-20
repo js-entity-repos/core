@@ -1,5 +1,7 @@
 # Facade
 
+The facade contains common functions for storage and retrieval of entities from a repository.
+
 - [countEntities](#countentities)
 - [createEntity](#createentity)
 - [getEntities](#getentities)
@@ -8,6 +10,12 @@
 - [patchEntity](#patchentity)
 - [removeEntities](#removeentities)
 - [removeEntity](#removeentity)
+
+The facade in this repository is a TypeScript interface, but concrete implementations of the interface include:
+
+- [Memory](https://github.com/js-entity-repos/memory) - Coming Soon
+- [Mongo](https://github.com/js-entity-repos/memory) - Coming Soon
+- [Knex](https://github.com/js-entity-repos/memory) - Coming Soon
 
 ### countEntities
 ```ts
