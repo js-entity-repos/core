@@ -29,7 +29,7 @@ const { count } = await facade.countEntities({
 });
 ```
 
-This package contains the [count entities tests](../src/tests/countEntities) and the [count entities signature](../src/signatures/CountEntities) for this function.
+This package contains the [count entities tests](../src/tests/countEntities) and the [count entities signature](../src/signatures/CountEntities.ts) for this function.
 
 ### createEntity
 Creates a new entity using the `entity` option.
@@ -40,7 +40,7 @@ const { entity } = await facade.createEntity({
 });
 ```
 
-This package contains the [create entity tests](../src/tests/createEntity) and the [create entity signature](../src/signatures/CreateEntity) for this function.
+This package contains the [create entity tests](../src/tests/createEntity) and the [create entity signature](../src/signatures/CreateEntity.ts) for this function.
 
 ### getEntities
 Retreives a sorted paginated array of entities that match the `filter` option.
@@ -63,7 +63,7 @@ const firstPage = await facade.getEntities({
 });
 ```
 
-This package contains the [get entities tests](../src/tests/getEntities) and the [get entities signature](../src/signatures/GetEntities) for this function.
+This package contains the [get entities tests](../src/tests/getEntities) and the [get entities signature](../src/signatures/GetEntities.ts) for this function.
 
 ### getEntity
 Retrieves a single entity that matches the `id` option.
@@ -74,7 +74,7 @@ const { entity } = await facade.getEntity({
 });
 ```
 
-This package contains the [get entity tests](../src/tests/getEntity) and the [get entity signature](../src/signatures/GetEntity) for this function.
+This package contains the [get entity tests](../src/tests/getEntity) and the [get entity signature](../src/signatures/GetEntity.ts) for this function.
 
 ### overwriteEntity
 For an entity that matches the `id` option, it changes all of an entity's properties using the `entity` option.
@@ -86,7 +86,7 @@ const { entity } = await facade.overwriteEntity({
 });
 ```
 
-This package contains the [overwrite entity tests](../src/tests/overwriteEntity) and the [overwrite entity signature](../src/signatures/OverwriteEntity) for this function.
+This package contains the [overwrite entity tests](../src/tests/overwriteEntity) and the [overwrite entity signature](../src/signatures/OverwriteEntity.ts) for this function.
 
 ### patchEntity
 For an entity that matches the `id` option, it changes some of an entity's properties using the `patch` option.
@@ -98,7 +98,7 @@ const { entity } = await facade.patchEntity({
 });
 ```
 
-This package contains the [patch entity tests](../src/tests/patchEntity) and the [patch entity signature](../src/signatures/PatchEntity) for this function.
+This package contains the [patch entity tests](../src/tests/patchEntity) and the [patch entity signature](../src/signatures/PatchEntity.ts) for this function.
 
 ### removeEntities
 Removes all entities that match the `filter` option.
@@ -109,7 +109,7 @@ await facade.removeEntities({
 });
 ```
 
-This package contains the [remove entities tests](../src/tests/removesEntities) and the [remove entities signature](../src/signatures/RemoveEntities) for this function.
+This package contains the [remove entities tests](../src/tests/removesEntities) and the [remove entities signature](../src/signatures/RemoveEntities.ts) for this function.
 
 ### removeEntity
 Removes an entity that matches the `id` option.
@@ -120,7 +120,7 @@ await facade.removeEntity({
 });
 ```
 
-This package contains the [remove entity tests](../src/tests/removesEntity) and the [remove entity signature](../src/signatures/RemoveEntity) for this function.
+This package contains the [remove entity tests](../src/tests/removesEntity) and the [remove entity signature](../src/signatures/RemoveEntity.ts) for this function.
 
 ### upsertEntity
 Creates an entity when no entity exists that matches the `id` option. Otherwise, it overwrites all of the properties for an entity that matches the `id` option.
@@ -132,4 +132,4 @@ await facade.upsertEntity({
 });
 ```
 
-This package contains the [upsert entity tests](../src/tests/upsertsEntity) and the [upsert entity signature](../src/signatures/UpsertEntity) for this function.
+This package contains the [upsert entity tests](../src/tests/upsertsEntity) and the [upsert entity signature](../src/signatures/UpsertEntity.ts) for this function.
