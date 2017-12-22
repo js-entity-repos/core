@@ -8,6 +8,9 @@
   },
   "author": "js-entity-repos",
   "license": "GPL-3.0",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsc",
     "lint": "tslint --project ./tsconfig.json",
