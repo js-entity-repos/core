@@ -5,17 +5,19 @@ import Cursor from '../../types/Cursor';
 import Filter from '../../types/Filter';
 import Pagination from '../../types/Pagination';
 import Sort from '../../types/Sort';
-import { TestEntity, testEntity, testId, TestId } from '../utils/testEntity';
+import { TestEntity, testEntity, TestId } from '../utils/testEntity';
 
 export default (facade: Facade<TestId, TestEntity>) => {
-  const firstEntity = { ...testEntity, id: 'first_entity_id' };
-  const secondEntity = { ...testEntity, id: 'second_entity_id' };
+  const firstId = { id: 'test_id_1' };
+  const secondId = { id: 'test_id_2' };
+  const firstEntity = { ...testEntity, ...firstId };
+  const secondEntity = { ...testEntity, ...secondId };
   const sort: Sort<TestEntity> = { id: true };
   const filter: Filter<TestEntity> = {};
 
   const createTestEntities = async () => {
-    await facade.createEntity({ id: testId, entity: firstEntity });
-    await facade.createEntity({ id: testId, entity: secondEntity });
+    await facade.createEntity({ id: firstId, entity: firstEntity });
+    await facade.createEntity({ id: secondId, entity: secondEntity });
   };
 
   const paginate = (cursor: Cursor, forward: boolean) => {

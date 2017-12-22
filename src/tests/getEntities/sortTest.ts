@@ -4,11 +4,13 @@ import Facade from '../../Facade';
 import Filter from '../../types/Filter';
 import Pagination from '../../types/Pagination';
 import Sort from '../../types/Sort';
-import { TestEntity, testEntity, TestId, testId } from '../utils/testEntity';
+import { TestEntity, testEntity, TestId } from '../utils/testEntity';
 
 export default (facade: Facade<TestId, TestEntity>) => {
-  const firstEntity = { ...testEntity, stringProp: 'a', numberProp: 1 };
-  const secondEntity = { ...testEntity, stringProp: 'b', numberProp: 2 };
+  const firstId = { id: 'test_id_1' };
+  const secondId = { id: 'test_id_2' };
+  const firstEntity = { ...testEntity, ...firstId, stringProp: 'a', numberProp: 1 };
+  const secondEntity = { ...testEntity, ...secondId, stringProp: 'b', numberProp: 2 };
 
   const assertSort = async (sortedEntities: TestEntity[], sort: Sort<TestEntity>) => {
     const filter: Filter<TestEntity> = {};
@@ -21,38 +23,38 @@ export default (facade: Facade<TestId, TestEntity>) => {
   };
 
   it('should sort by one ascending property when entities are ordered', async () => {
-    await facade.createEntity({ id: testId, entity: firstEntity });
-    await facade.createEntity({ id: testId, entity: secondEntity });
+    await facade.createEntity({ id: firstId, entity: firstEntity });
+    await facade.createEntity({ id: secondId, entity: secondEntity });
     await assertSort([firstEntity, secondEntity], { stringProp: true });
   });
 
   it('should sort by one ascending property when entities are unordered', async () => {
-    await facade.createEntity({ id: testId, entity: secondEntity });
-    await facade.createEntity({ id: testId, entity: firstEntity });
+    await facade.createEntity({ id: secondId, entity: secondEntity });
+    await facade.createEntity({ id: firstId, entity: firstEntity });
     await assertSort([firstEntity, secondEntity], { stringProp: true });
   });
 
   it('should sort by one descending property when entities are ordered', async () => {
-    await facade.createEntity({ id: testId, entity: secondEntity });
-    await facade.createEntity({ id: testId, entity: firstEntity });
+    await facade.createEntity({ id: secondId, entity: secondEntity });
+    await facade.createEntity({ id: firstId, entity: firstEntity });
     await assertSort([secondEntity, firstEntity], { stringProp: false });
   });
 
   it('should sort by one descending property when entities are unordered', async () => {
-    await facade.createEntity({ id: testId, entity: firstEntity });
-    await facade.createEntity({ id: testId, entity: secondEntity });
+    await facade.createEntity({ id: firstId, entity: firstEntity });
+    await facade.createEntity({ id: secondId, entity: secondEntity });
     await assertSort([secondEntity, firstEntity], { stringProp: false });
   });
 
   it('should sort by two properties when ascending first and descending second', async () => {
-    await facade.createEntity({ id: testId, entity: firstEntity });
-    await facade.createEntity({ id: testId, entity: secondEntity });
+    await facade.createEntity({ id: firstId, entity: firstEntity });
+    await facade.createEntity({ id: secondId, entity: secondEntity });
     await assertSort([secondEntity, firstEntity], { stringProp: true, numberProp: false });
   });
 
   it('should sort by two properties when descending first and ascending second', async () => {
-    await facade.createEntity({ id: testId, entity: firstEntity });
-    await facade.createEntity({ id: testId, entity: secondEntity });
+    await facade.createEntity({ id: firstId, entity: firstEntity });
+    await facade.createEntity({ id: secondId, entity: secondEntity });
     await assertSort([secondEntity, firstEntity], { stringProp: false, numberProp: true });
   });
 };
