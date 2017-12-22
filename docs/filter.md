@@ -1,6 +1,6 @@
 # Filter
 
-This is an object that filters the entities. The filter interface currently supports the following operators which have been borrowed from Mongo.
+This is an object that filters the entities. The [filter type definition](../src/types/Filter.ts) currently supports the following operators which have been borrowed from Mongo.
 
 Operator | Description
 --- | ---
