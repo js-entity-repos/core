@@ -19,6 +19,8 @@ The facade in this package is a TypeScript interface, but concrete implementatio
 - [Knex](https://github.com/js-entity-repos/memory) - Coming Soon
 
 ### countEntities
+Counts the number of entities that match the `filter` option.
+
 ```ts
 const { count } = await facade.countEntities({
   filter: { foo: 'bar' },
@@ -26,6 +28,8 @@ const { count } = await facade.countEntities({
 ```
 
 ### createEntity
+Creates a new entity using the `entity` option.
+
 ```ts
 const { entity } = await facade.createEntity({
   entity: { id: 'example_id', foo: 'bar' },
@@ -33,6 +37,8 @@ const { entity } = await facade.createEntity({
 ```
 
 ### getEntities
+Retreives a sorted paginated array of entities that match the `filter` option.
+
 ```ts
 const { entities, nextCursor, previousCursor } = await facade.getEntities({
   filter: { foo: 'bar' },
@@ -52,6 +58,8 @@ const firstPage = await facade.getEntities({
 ```
 
 ### getEntity
+Retrieves a single entity that matches the `id` option.
+
 ```ts
 const { entity } = await facade.getEntity({
   id: { id: 'example_id' },
@@ -59,6 +67,8 @@ const { entity } = await facade.getEntity({
 ```
 
 ### overwriteEntity
+For an entity that matches the `id` option, it changes all of an entity's properties using the `entity` option.
+
 ```ts
 const { entity } = await facade.overwriteEntity({
   id: { id: 'example_id' },
@@ -67,6 +77,8 @@ const { entity } = await facade.overwriteEntity({
 ```
 
 ### patchEntity
+For an entity that matches the `id` option, it changes some of an entity's properties using the `patch` option.
+
 ```ts
 const { entity } = await facade.patchEntity({
   id: { id: 'example_id' },
@@ -75,6 +87,8 @@ const { entity } = await facade.patchEntity({
 ```
 
 ### removeEntities
+Removes all entities that match the `filter` option.
+
 ```ts
 await facade.removeEntities({
   filter: { foo: 'bar' },
@@ -82,6 +96,8 @@ await facade.removeEntities({
 ```
 
 ### removeEntity
+Removes an entity that matches the `id` option.
+
 ```ts
 await facade.removeEntity({
   id: { id: 'example_id' },
@@ -89,6 +105,8 @@ await facade.removeEntity({
 ```
 
 ### upsertEntity
+Creates an entity when no entity exists that matches the `id` option. Otherwise, it overwrites all of the properties for an entity that matches the `id` option.
+
 ```ts
 await facade.upsertEntity({
   id: { id: 'example_id' },
