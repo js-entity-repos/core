@@ -18,7 +18,7 @@ This is an object that contains only the properties required to distinctly ident
 ### Patch
 This is an object containing some of the entity's properties.
 
-### Filter
+### Filter
 This is an object that filters the entities. More information can be found in the [filter documentation](./filter).
 
 ### Sort
