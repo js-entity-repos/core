@@ -2,7 +2,7 @@
 
 The facade contains common functions for storage and retrieval of entities from a repository.
 
-- [countEntities](./.mdfunctions#countentities)
+- [countEntities](./functions.md#countentities)
 - [createEntity](./functions.md#createentity)
 - [getEntities](./functions.md#getentities)
 - [getEntity](./functions.md#getentity)
