@@ -8,6 +8,7 @@ import overwriteEntityTest from './overwriteEntity/test';
 import patchEntityTest from './patchEntity/test';
 import removeEntitiesTest from './removeEntities/test';
 import removeEntityTest from './removeEntity/test';
+import upsertEntityTest from './upsertEntity/test';
 import { TestEntity, TestId } from './utils/testEntity';
 
 export const facadeTest = (facade: Facade<TestId, TestEntity>) => {
@@ -24,5 +25,6 @@ export const facadeTest = (facade: Facade<TestId, TestEntity>) => {
     countEntitiesTest(facade);
     getEntitiesTest(facade);
     removeEntitiesTest(facade);
+    upsertEntityTest(facade);
   });
 };

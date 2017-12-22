@@ -6,6 +6,7 @@ import OverwriteEntity from './signatures/OverwriteEntity';
 import PatchEntity from './signatures/PatchEntity';
 import RemoveEntities from './signatures/RemoveEntities';
 import RemoveEntity from './signatures/RemoveEntity';
+import UpsertEntity from './signatures/UpsertEntity';
 
 export default interface Facade<Id, Entity> {
   readonly getEntity: GetEntity<Id, Entity>;
@@ -16,4 +17,5 @@ export default interface Facade<Id, Entity> {
   readonly getEntities: GetEntities<Entity>;
   readonly countEntities: CountEntities<Entity>;
   readonly removeEntities: RemoveEntities<Entity>;
+  readonly upsertEntity: UpsertEntity<Id, Entity>;
 }

@@ -10,6 +10,7 @@ The facade contains common functions for storage and retrieval of entities from 
 - [patchEntity](#patchentity)
 - [removeEntities](#removeentities)
 - [removeEntity](#removeentity)
+- [upsertEntity](#upsertentity)
 
 The facade in this package is a TypeScript interface, but concrete implementations of the interface include:
 
@@ -84,5 +85,13 @@ await facade.removeEntities({
 ```ts
 await facade.removeEntity({
   id: { id: 'example_id' },
+});
+```
+
+### upsertEntity
+```ts
+await facade.upsertEntity({
+  id: { id: 'example_id' },
+  entity: { id: 'example_id', foo: 'bar' },
 });
 ```
