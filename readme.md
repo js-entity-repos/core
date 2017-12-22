@@ -2,4 +2,5 @@
 > Provides common interfaces and tests for js-entities-repos.
 
 ### Usage
-1. Install it with `npm i @js-entity-repos/core`.
+- Install it with `npm i @js-entity-repos/core`.
+- Understand it by reading the [documenation](./docs/facade.md).
