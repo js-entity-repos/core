@@ -29,7 +29,7 @@ export default (facade: Facade<TestId, TestEntity>) => {
     await createTestEntities();
     const pagination: Pagination = { cursor: undefined, forward: true, limit: 1 };
     const result = await facade.getEntities({ filter, sort, pagination });
-    assert.deepEqual(result.entities, [testEntity]);
+    assert.deepEqual(result.entities, [firstEntity]);
   });
 
   it('should return first entity when paginating forward without cursor', async () => {
