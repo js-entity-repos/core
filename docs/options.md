@@ -19,7 +19,7 @@ This is an object that contains only the properties required to distinctly ident
 This is an object containing some of the entity's properties.
 
 ### Filter
-This is an object that filters the entities. More information can be found in the [filter documentation](./filter).
+This is an object that filters the entities. More information can be found in the [filter documentation](./filter.md).
 
 ### Sort
 This is an object where a key represents the entity property to be sorted and the value represents the direction to sort. The value should be `true` to sort in ascending order and `false` to sort in descending order. The properties are sorted in order of their definition in the sort option, for example, the following sort option `{ createdAt: false, id: true }` will sort by the `createdAt` property first and then the the `id` property.
