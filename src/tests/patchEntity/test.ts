@@ -8,8 +8,11 @@ import { TestEntity, testEntity, testId, TestId } from '../utils/testEntity';
 export default (facade: Facade<TestId, TestEntity>) => {
   describe('patchEntity', () => {
     const assertPatch = async (testPatch: Partial<TestEntity>) => {
-      const patchedEntity = await facade.patchEntity({ id: testId, patch: testPatch });
-      const retrievedEntity = await facade.getEntity({ id: testId });
+      const { entity: patchedEntity } = await facade.patchEntity({
+        id: testId,
+        patch: testPatch,
+      });
+      const { entity: retrievedEntity } = await facade.getEntity({ id: testId });
       const expectedEntity = { ...testEntity, ...testPatch };
       assert.deepEqual(patchedEntity, expectedEntity);
       assert.deepEqual(retrievedEntity, expectedEntity);

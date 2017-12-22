@@ -20,8 +20,11 @@ export default (facade: Facade<TestId, TestEntity>) => {
         stringProp: 'test_string_prop_overwrite',
       };
       await facade.createEntity({ id: testId, entity: testEntity });
-      const overwrittenEntity = await facade.overwriteEntity({ id: testId, entity: testOverwrite });
-      const retrievedEntity = await facade.getEntity({ id: testId });
+      const { entity: overwrittenEntity } = await facade.overwriteEntity({
+        entity: testOverwrite,
+        id: testId,
+      });
+      const { entity: retrievedEntity } = await facade.getEntity({ id: testId });
       assert.deepEqual(overwrittenEntity, testOverwrite);
       assert.deepEqual(retrievedEntity, testOverwrite);
     });

@@ -6,8 +6,11 @@ import { TestEntity, testEntity, testId, TestId } from '../utils/testEntity';
 export default (facade: Facade<TestId, TestEntity>) => {
   describe('upsertEntity', () => {
     it('should create when identifier does not exist', async () => {
-      const createdEntity = await facade.upsertEntity({ id: testId, entity: testEntity });
-      const retrievedEntity = await facade.getEntity({ id: testId });
+      const { entity: createdEntity } = await facade.upsertEntity({
+        entity: testEntity,
+        id: testId,
+      });
+      const { entity: retrievedEntity } = await facade.getEntity({ id: testId });
       assert.deepEqual(createdEntity, testEntity);
       assert.deepEqual(retrievedEntity, testEntity);
     });
@@ -20,8 +23,11 @@ export default (facade: Facade<TestId, TestEntity>) => {
         stringProp: 'test_string_prop_overwrite',
       };
       await facade.createEntity({ id: testId, entity: testEntity });
-      const overwrittenEntity = await facade.upsertEntity({ id: testId, entity: testOverwrite });
-      const retrievedEntity = await facade.getEntity({ id: testId });
+      const { entity: overwrittenEntity } = await facade.upsertEntity({
+        entity: testOverwrite,
+        id: testId,
+      });
+      const { entity: retrievedEntity } = await facade.getEntity({ id: testId });
       assert.deepEqual(overwrittenEntity, testOverwrite);
       assert.deepEqual(retrievedEntity, testOverwrite);
     });
