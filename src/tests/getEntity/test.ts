@@ -13,7 +13,7 @@ export default (facade: Facade<TestId, TestEntity>) => {
     });
 
     it('should not error when identifier does exist', async () => {
-      await facade.createEntity({ entity: testEntity });
+      await facade.createEntity({ id: testId, entity: testEntity });
       const retrievedEntity = await facade.getEntity({ id: testId });
       assert.deepEqual(retrievedEntity, testEntity);
     });

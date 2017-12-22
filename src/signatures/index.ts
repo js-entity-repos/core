@@ -9,7 +9,7 @@ import RemoveEntity from './RemoveEntity';
 import UpsertEntity from './UpsertEntity';
 
 export type CountEntitiesSignature<Entity> = CountEntities<Entity>;
-export type CreateEntitySignature<Entity> = CreateEntity<Entity>;
+export type CreateEntitySignature<Id, Entity> = CreateEntity<Id, Entity>;
 export type GetEntitiesSignature<Entity> = GetEntities<Entity>;
 export type GetEntitySignature<Id, Entity> = GetEntity<Id, Entity>;
 export type OverwriteEntitySignature<Id, Entity> = OverwriteEntity<Id, Entity>;

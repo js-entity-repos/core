@@ -24,7 +24,7 @@ export default (facade: Facade<TestId, TestEntity>) => {
       const testPatch: Partial<TestEntity> = {
         stringProp: 'test_string_prop_patch',
       };
-      await facade.createEntity({ entity: testEntity });
+      await facade.createEntity({ id: testId, entity: testEntity });
       await assertPatch(testPatch);
     });
 
@@ -34,7 +34,7 @@ export default (facade: Facade<TestId, TestEntity>) => {
         numberProp: 2,
         stringProp: 'test_string_prop_patch',
       };
-      await facade.createEntity({ entity: testEntity });
+      await facade.createEntity({ id: testId, entity: testEntity });
       await assertPatch(testPatch);
     });
   });

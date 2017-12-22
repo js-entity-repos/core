@@ -12,7 +12,7 @@ export default (facade: Facade<TestId, TestEntity>) => {
     });
 
     it('should not error when identifier does exist', async () => {
-      await facade.createEntity({ entity: testEntity });
+      await facade.createEntity({ id: testId, entity: testEntity });
       await facade.removeEntity({ id: testId });
       const promise = facade.getEntity({ id: testId });
       await assertRejects(promise, MissingEntityError);

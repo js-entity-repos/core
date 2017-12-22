@@ -1,7 +1,7 @@
 import 'mocha'; // tslint:disable-line:no-import-side-effect
 import Facade from '../../Facade';
 import Filter from '../../types/Filter';
-import { TestEntity, testEntity, TestId } from '../utils/testEntity';
+import { TestEntity, testEntity, TestId, testId } from '../utils/testEntity';
 
 export type FilterAsserter = (filter: Filter<TestEntity>) => Promise<void>;
 
@@ -16,8 +16,8 @@ export const secondEntity = { ...testEntity, stringProp: 'b', numberProp: 2 };
 
 export default (opts: Opts) => {
   const createTestEntities = async () => {
-    await opts.facade.createEntity({ entity: firstEntity });
-    await opts.facade.createEntity({ entity: secondEntity });
+    await opts.facade.createEntity({ id: testId, entity: firstEntity });
+    await opts.facade.createEntity({ id: testId, entity: secondEntity });
   };
 
   it('should not filter when using no filter', async () => {

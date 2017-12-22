@@ -1,4 +1,5 @@
-export interface Opts<Entity> {
+export interface Opts<Id, Entity> {
+  readonly id: Id;
   readonly entity: Entity;
 }
 
@@ -6,6 +7,6 @@ export interface Result<Entity> {
   readonly entity: Entity;
 }
 
-export type Signature<Entity> = (opts: Opts<Entity>) => Promise<Result<Entity>>;
+export type Signature<Id, Entity> = (opts: Opts<Id, Entity>) => Promise<Result<Entity>>;
 
 export default Signature;

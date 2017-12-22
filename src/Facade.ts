@@ -10,7 +10,7 @@ import UpsertEntity from './signatures/UpsertEntity';
 
 export default interface Facade<Id, Entity> {
   readonly getEntity: GetEntity<Id, Entity>;
-  readonly createEntity: CreateEntity<Entity>;
+  readonly createEntity: CreateEntity<Id, Entity>;
   readonly overwriteEntity: OverwriteEntity<Id, Entity>;
   readonly patchEntity: PatchEntity<Id, Entity>;
   readonly removeEntity: RemoveEntity<Id>;

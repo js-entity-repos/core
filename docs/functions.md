@@ -24,10 +24,11 @@ const { count } = await facade.countEntities({
 This package contains the [count entities tests](../src/tests/countEntities) and the [count entities signature](../src/signatures/CountEntities.ts) for this function.
 
 ### createEntity
-Creates a new entity using the `entity` option.
+Creates a new entity using the `entity` option if no entity exists that matches the `id` option.
 
 ```ts
 const { entity } = await facade.createEntity({
+  id: { id: 'example_id' },
   entity: { id: 'example_id', foo: 'bar' },
 });
 ```
