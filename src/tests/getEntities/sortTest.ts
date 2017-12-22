@@ -49,7 +49,7 @@ export default (facade: Facade<TestId, TestEntity>) => {
   it('should sort by two properties when ascending first and descending second', async () => {
     await facade.createEntity({ id: firstId, entity: firstEntity });
     await facade.createEntity({ id: secondId, entity: secondEntity });
-    await assertSort([secondEntity, firstEntity], { stringProp: true, numberProp: false });
+    await assertSort([firstEntity, secondEntity], { stringProp: true, numberProp: false });
   });
 
   it('should sort by two properties when descending first and ascending second', async () => {
