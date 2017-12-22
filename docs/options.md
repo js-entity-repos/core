@@ -21,7 +21,7 @@ interface Id {
 ```
 
 ### Entity
-This is an object that contains all of the entity's properties. The word "entity" has been borrowed from Entity-Relationship Models/Diagrams and has been used instead of the word "model" to avoid confusion with MVC.
+This is an object that contains all of the entity's properties. The word "entity" has been borrowed from [Entity-Relationship Models/Diagrams](https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model) and has been used instead of the word "model" to avoid confusion with MVC.
 
 This interface is user-defined hence not contained in this package, the interface below demonstrates what this might look like for a todo entity and extends the [Id interface from the Id example](#id).
 
