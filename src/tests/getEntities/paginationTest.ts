@@ -42,7 +42,7 @@ export default (facade: Facade<TestId, TestEntity>) => {
     await createTestEntities();
     const firstResult = await paginate(undefined, true);
     const finalResult = await paginate(firstResult.nextCursor, true);
-    assert.deepEqual(finalResult.entities, [firstEntity]);
+    assert.deepEqual(finalResult.entities, [secondEntity]);
   });
 
   it('should return no entities when paginating forward with second cursor', async () => {
@@ -50,7 +50,7 @@ export default (facade: Facade<TestId, TestEntity>) => {
     const firstResult = await paginate(undefined, true);
     const secondResult = await paginate(firstResult.nextCursor, true);
     const finalResult = await paginate(secondResult.nextCursor, true);
-    assert.deepEqual(finalResult.entities, [firstEntity]);
+    assert.deepEqual(finalResult.entities, []);
   });
 
   it('should return second entity when paginating backward without cursor', async () => {
@@ -71,6 +71,6 @@ export default (facade: Facade<TestId, TestEntity>) => {
     const firstResult = await paginate(undefined, false);
     const secondResult = await paginate(firstResult.previousCursor, false);
     const finalResult = await paginate(secondResult.previousCursor, false);
-    assert.deepEqual(finalResult.entities, [firstEntity]);
+    assert.deepEqual(finalResult.entities, []);
   });
 };
