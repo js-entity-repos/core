@@ -6,6 +6,7 @@
     "type": "git",
     "url": "https://github.com/js-entity-repos/core"
   },
+  "main": "dist/index.js",
   "author": "js-entity-repos",
   "license": "GPL-3.0",
   "files": [
