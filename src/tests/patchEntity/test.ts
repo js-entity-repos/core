@@ -19,7 +19,7 @@ export default (facade: Facade<TestId, TestEntity>) => {
     };
 
     it('should error when identifier does not exist', async () => {
-      const promise = facade.overwriteEntity({ id: testId, entity: testEntity });
+      const promise = facade.patchEntity({ id: testId, patch: testEntity });
       await assertRejects(promise, MissingEntityError);
     });
 
