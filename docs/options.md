@@ -1,6 +1,6 @@
 # Options
 
-The [facade](./facade) [functions](./functions) have some common options that they use.
+The [facade](./facade.md) [functions](./functions.md) have some common options that they use.
 
 - [Entity](#entity)
 - [Id](#id)

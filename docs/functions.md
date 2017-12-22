@@ -1,6 +1,6 @@
 # Functions
 
-The [facade](./facade) contains common functions for storage and retrieval of entities from a repository.
+The [facade](./facade.md) contains common functions for storage and retrieval of entities from a repository.
 
 - [countEntities](#countentities)
 - [createEntity](#createentity)
