@@ -1,7 +1,7 @@
 {
   "name": "@js-entity-repos/core",
   "version": "1.0.0",
-  "description": "Provides common interfaces and tests for js-entities-repos.",
+  "description": "Provides common interfaces and tests for concrete implementations of js-entity-repos.",
   "repository": {
     "type": "git",
     "url": "https://github.com/js-entity-repos/core"
