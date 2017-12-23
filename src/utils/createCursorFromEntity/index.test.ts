@@ -1,7 +1,7 @@
 import 'mocha'; // tslint:disable-line:no-import-side-effect
 import * as assert from 'power-assert';
 import { TestEntity, testEntity } from '../../tests/utils/testEntity';
-import createCursorFromEntity from './createCursorFromEntity';
+import createCursorFromEntity from './index';
 
 describe('createCursorFromEntity', () => {
   it('should return undefined when the entity is undefined', () => {

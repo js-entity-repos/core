@@ -2,8 +2,8 @@ import 'mocha'; // tslint:disable-line:no-import-side-effect
 import * as assert from 'power-assert';
 import { TestEntity, testEntity } from '../../tests/utils/testEntity';
 import Pagination from '../../types/Pagination';
-import createCursorFromEntity from '../createCursorFromEntity/createCursorFromEntity';
-import createPaginationFilter from './createPaginationFilter';
+import createCursorFromEntity from '../createCursorFromEntity';
+import createPaginationFilter from './index';
 
 describe('createCursorFromEntity', () => {
   const sort = { id: true };
