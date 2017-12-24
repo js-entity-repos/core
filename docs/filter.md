@@ -6,6 +6,7 @@ Operator | Description
 --- | ---
 [$and](https://docs.mongodb.com/manual/reference/operator/query/and/#op._S_and) | Includes entities where all of the specified filters are true.
 [$or](https://docs.mongodb.com/manual/reference/operator/query/or/#op._S_or) | Includes entities where some of the specified filters are true.
+[$nor](https://docs.mongodb.com/manual/reference/operator/query/nor/#op._S_nor) | Includes entities where some of the specified filters are false.
 [$not](https://docs.mongodb.com/manual/reference/operator/query/no/#op._S_no) | Includes entities where a specified filter is not true.
 [$eq](https://docs.mongodb.com/manual/reference/operator/query/eq/#op._S_eq) | Includes entities where the value of a given property is equal to the specified value.
 [$ne](https://docs.mongodb.com/manual/reference/operator/query/ne/#op._S_ne) | Includes entities where the value of a given property is not equal to the specified value.
@@ -47,6 +48,14 @@ The filter below is comprehensive example using all of the operators.
           "stringProp3": {
             "$nin": ["string value 4", "string value 5"]
           }
+        }
+      ]
+    },
+    ,
+    {
+      "$nor": [
+        {
+          "stringProp4": "string value 6"
         }
       ]
     }

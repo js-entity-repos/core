@@ -24,10 +24,15 @@ export interface OrFilter<Entity> {
   readonly $or: Filter<Entity>[];
 }
 
+export interface NorFilter<Entity> {
+  readonly $nor: Filter<Entity>[];
+}
+
 export type Filter<Entity> = (
   EntityFilter<Entity> |
   AndFilter<Entity> |
-  OrFilter<Entity>
+  OrFilter<Entity> |
+  NorFilter<Entity>
 );
 
 export default Filter;

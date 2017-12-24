@@ -72,6 +72,11 @@ export default (opts: Opts) => {
     await opts.assertFirstEntityFilter({ $or: [{ stringProp: 'a' }, { numberProp: 1 }] });
   });
 
+  it('should filter correctly when using $nor operator', async () => {
+    await createTestEntities();
+    await opts.assertFirstEntityFilter({ $nor: [{ stringProp: 'b' }, { numberProp: 2 }] });
+  });
+
   it('should filter correctly when using $not operator', async () => {
     await createTestEntities();
     await opts.assertFirstEntityFilter({ stringProp: { $not: { $eq: 'b' } } });
