@@ -9,12 +9,11 @@ export type PropFilter<Prop> = (
   LesserFilter<Prop> |
   InFilter<Prop> |
   EqualityFilter<Prop> |
-  NotFilter<Prop> |
-  Prop
+  NotFilter<Prop>
 );
 
 export type EntityFilter<Entity> = {
-  readonly [P in keyof Entity]?: PropFilter<Entity[P]>;
+  readonly [P in keyof Entity]?: Entity[P] | PropFilter<Entity[P]>;
 };
 
 export interface AndFilter<Entity> {

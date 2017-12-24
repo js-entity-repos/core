@@ -74,6 +74,6 @@ export default (opts: Opts) => {
 
   it('should filter correctly when using $not operator', async () => {
     await createTestEntities();
-    await opts.assertFirstEntityFilter({ stringProp: { $not: 'b' } });
+    await opts.assertFirstEntityFilter({ stringProp: { $not: { $eq: 'b' } } });
   });
 };
