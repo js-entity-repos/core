@@ -24,5 +24,5 @@ The functions have some common options that they use.
 The [facade in this package is a TypeScript interface](../src/Facade.ts), but concrete implementations of the interface are listed below.
 
 - [Memory](https://github.com/js-entity-repos/memory)
-- [Mongo](https://github.com/js-entity-repos/mongo) - Coming Soon
+- [Mongo](https://github.com/js-entity-repos/mongo)
 - [Knex](https://github.com/js-entity-repos/knex) - Coming Soon
