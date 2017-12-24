@@ -22,10 +22,10 @@ The filter below is comprehensive example using all of the operators.
 {
   "$or": [
     {
-      "$not": {
-        "numberProp1": {
+      "numberProp1": {
+        "$not": {
           "$gt": 0,
-          "$lt": 1,
+          "$lt": 1
         }
       }
     },
@@ -35,7 +35,7 @@ The filter below is comprehensive example using all of the operators.
           "stringProp1": "string value 1",
           "numberProp2": {
             "$gte": 0,
-            "$lte": 1,
+            "$lte": 1
           },
           "numberProp3": { "$ne": 0 },
           "numberProp4": { "$eq": 0 }
