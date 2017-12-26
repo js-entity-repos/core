@@ -1,7 +1,7 @@
 import * as atob from 'atob';
 import { get, mapValues } from 'lodash';
 // tslint:disable-next-line:no-unused
-import Filter, { AndFilter, NorFilter, NotFilter, OrFilter } from '../../types/Filter';
+import Filter, { ConditionFilter, EntityFilter } from '../../types/Filter';
 import Pagination from '../../types/Pagination';
 import Sort from '../../types/Sort';
 
