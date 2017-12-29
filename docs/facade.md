@@ -23,6 +23,7 @@ The functions have some common options that they use.
 
 The [facade in this package is a TypeScript interface](../src/Facade.ts), but concrete implementations of the interface are listed below.
 
-- [Memory](https://github.com/js-entity-repos/memory)
-- [Mongo](https://github.com/js-entity-repos/mongo)
-- [Knex](https://github.com/js-entity-repos/knex) - Coming Soon
+- [Memory](https://github.com/js-entity-repos/memory) - This is useful for testing client/server side.
+- [Mongo](https://github.com/js-entity-repos/mongo) - Uses the MongoDB Node JS driver.
+- [Knex](https://github.com/js-entity-repos/knex) - For SQL databases.
+- [Axios](https://github.com/js-entity-repos/axios) - For HTTP requests to a HTTP interface for entities.
