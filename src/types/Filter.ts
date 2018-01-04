@@ -1,3 +1,5 @@
+import Entity from './Entity';
+
 export interface PropFilter<Prop> {
   readonly $gt?: Prop;
   readonly $gte?: Prop;
@@ -10,19 +12,19 @@ export interface PropFilter<Prop> {
   readonly $not?: PropFilter<Prop>;
 }
 
-export type EntityFilter<Entity> = {
-  readonly [P in keyof Entity]?: Entity[P] | PropFilter<Entity[P]>;
+export type EntityFilter<E extends Entity> = {
+  readonly [P in keyof E]?: E[P] | PropFilter<E[P]>;
 };
 
-export interface ConditionFilter<Entity> {
-  readonly $and?: Filter<Entity>[];
-  readonly $or?: Filter<Entity>[];
-  readonly $nor?: Filter<Entity>[];
+export interface ConditionFilter<E extends Entity> {
+  readonly $and?: Filter<E>[];
+  readonly $or?: Filter<E>[];
+  readonly $nor?: Filter<E>[];
 }
 
-export type Filter<Entity> = (
-  EntityFilter<Entity> &
-  ConditionFilter<Entity>
+export type Filter<E extends Entity> = (
+  EntityFilter<E> &
+  ConditionFilter<E>
 );
 
 export default Filter;

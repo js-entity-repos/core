@@ -2,9 +2,9 @@ import * as assertRejects from 'assert-rejects';
 import 'mocha'; // tslint:disable-line:no-import-side-effect
 import ConflictingEntityError from '../../errors/ConflictingEntityError';
 import Facade from '../../Facade';
-import { TestEntity, testEntity, testId, TestId } from '../utils/testEntity';
+import { TestEntity, testEntity, testId } from '../utils/testEntity';
 
-export default (facade: Facade<TestId, TestEntity>) => {
+export default (facade: Facade<TestEntity>) => {
   describe('createEntity', () => {
     it('should not error when identifier does not exist', async () => {
       await facade.createEntity({ id: testId, entity: testEntity });

@@ -1,9 +1,9 @@
 import 'mocha'; // tslint:disable-line:no-import-side-effect
 import * as assert from 'power-assert';
 import Facade from '../../Facade';
-import { TestEntity, testEntity, testId, TestId } from '../utils/testEntity';
+import { TestEntity, testEntity, testId } from '../utils/testEntity';
 
-export default (facade: Facade<TestId, TestEntity>) => {
+export default (facade: Facade<TestEntity>) => {
   describe('upsertEntity', () => {
     it('should create when identifier does not exist', async () => {
       const { entity: createdEntity } = await facade.upsertEntity({
@@ -17,8 +17,8 @@ export default (facade: Facade<TestId, TestEntity>) => {
 
     it('should overwrite when identifier does exist', async () => {
       const testOverwrite: TestEntity = {
-        ...testId,
         booleanProp: false,
+        id: testId,
         numberProp: 2,
         stringProp: 'test_string_prop_overwrite',
       };

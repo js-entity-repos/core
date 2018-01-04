@@ -1,5 +1,6 @@
 import * as atob from 'atob';
 import { get, mapValues } from 'lodash';
+import Entity from '../../types/Entity';
 // tslint:disable-next-line:no-unused
 import Filter, { ConditionFilter, EntityFilter } from '../../types/Filter';
 import Pagination from '../../types/Pagination';
@@ -9,7 +10,7 @@ const xor = (conditionA: boolean, conditionB: boolean) => {
   return (conditionA && !conditionB) || (!conditionA && conditionB);
 };
 
-export default <Entity>(pagination: Pagination, sort: Sort<Entity>): Filter<Entity> => {
+export default <E extends Entity>(pagination: Pagination, sort: Sort<E>): Filter<E> => {
   if (pagination.cursor === undefined) {
     return {};
   }
@@ -22,5 +23,5 @@ export default <Entity>(pagination: Pagination, sort: Sort<Entity>): Filter<Enti
       return { $lt: cursorValue };
     }
   });
-  return filter as any as Filter<Entity>;
+  return filter as any as Filter<E>;
 };
