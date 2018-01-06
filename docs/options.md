@@ -40,6 +40,6 @@ This package contains the [TypeScript Sort type definition](../src/types/Sort.ts
 ### Pagination
 This is an object with three properties, `limit`, `forward`, and `cursor`. The `limit` property defines how many entities to return (maximum). The `forward` property defines whether the entities should be iterated through forwards (when `true`) or backwards (when `false`) from the `cursor`. The `cursor` property defines where to start iterating through the entities. Cursors have been used instead of `skip` and `limit` to avoid the [pagination issues discussed by Rakhitha Nimesh](https://www.sitepoint.com/paginating-real-time-data-cursor-based-pagination/).
 
-Concrete implementations of the facade can use the [`createCursorFromEntity`](../src/utils/createCursorFromEntity) and [`createPaginationFilter`](../src/utils/createPaginationFilter) util functions to generate cursors.
+Concrete implementations of the facade can use the [`createCursorFromEntity`](../src/utils/createCursorFromEntity) and [`createPaginationFilter`](../src/utils/createPaginationFilter) utility functions to generate cursors.
 
 This package also contains the [TypeScript Pagination interface](../src/types/Pagination.ts) and the [TypeScript Cursor type definition](../src/types/Cursor.ts).
