@@ -22,7 +22,7 @@ describe('createCursorFromEntity', () => {
     const pagination: Pagination = { cursor, forward: true, limit: 1 };
     const actualResult = createPaginationFilter<TestEntity>(pagination, sort);
     const expectedResult: Filter<TestEntity> = {
-      booleanProp: { $lt: testEntity.booleanProp },
+      booleanProp: { $lte: testEntity.booleanProp },
       id: { $gt: testEntity.id },
     };
     assert.deepEqual(actualResult, expectedResult);
@@ -33,7 +33,7 @@ describe('createCursorFromEntity', () => {
     const pagination: Pagination = { cursor, forward: false, limit: 1 };
     const actualResult = createPaginationFilter<TestEntity>(pagination, sort);
     const expectedResult: Filter<TestEntity> = {
-      booleanProp: { $gt: testEntity.booleanProp },
+      booleanProp: { $gte: testEntity.booleanProp },
       id: { $lt: testEntity.id },
     };
     assert.deepEqual(actualResult, expectedResult);

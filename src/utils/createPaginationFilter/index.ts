@@ -18,9 +18,17 @@ export default <E extends Entity>(pagination: Pagination, sort: Sort<E>): Filter
   const filter = mapValues(cursorObj, (cursorValue, sortKey) => {
     const forward = !xor(get(sort, sortKey), pagination.forward);
     if (forward) {
-      return { $gt: cursorValue };
+      if (sortKey === 'id') {
+        return { $gt: cursorValue };
+      } else {
+        return { $gte: cursorValue };
+      }
     } else {
-      return { $lt: cursorValue };
+      if (sortKey === 'id') {
+        return { $lt: cursorValue };
+      } else {
+        return { $lte: cursorValue };
+      }
     }
   });
   return filter as any as Filter<E>;
