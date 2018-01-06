@@ -23,7 +23,7 @@ The project has some similarities with parts of the [FeathersJS framework](feath
 - Their service interface is missing some methods provided in the [Facade](./docs/facade.md) here.
 - Their errors take messages instead of parameters making it harder to support localisation.
 
-Thanks to colleagues at @HT2-Labs that have used and helped sanity check this project.
+Thanks to colleagues at [HT2-Labs](https://www.ht2labs.com) that have used and helped sanity check this project.
 
 - [James](https://github.com/ht2)
 - [Mariusz](https://github.com/mariocoski)
