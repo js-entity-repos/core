@@ -3,7 +3,7 @@ import Facade from '../../Facade';
 import Filter from '../../types/Filter';
 import { TestEntity, testEntity } from '../utils/testEntity';
 
-export type FilterAsserter = (filter: Filter<TestEntity>) => Promise<void>;
+export type FilterAsserter = (filter?: Filter<TestEntity>) => Promise<void>;
 
 export interface Opts {
   readonly facade: Facade<TestEntity>;
@@ -11,8 +11,8 @@ export interface Opts {
   readonly assertNoEntityFilter: FilterAsserter;
   readonly assertAllEntitiesFilter: FilterAsserter;
 }
-const firstId = 'test_id_1';
-const secondId = 'test_id_2';
+export const firstId = 'test_id_1';
+export const secondId = 'test_id_2';
 export const firstEntity = { ...testEntity, id: firstId, stringProp: 'a', numberProp: 1 };
 export const secondEntity = { ...testEntity, id: secondId, stringProp: 'b', numberProp: 2 };
 
@@ -22,12 +22,17 @@ export default (opts: Opts) => {
     await opts.facade.createEntity({ id: secondId, entity: secondEntity });
   };
 
+  it('should not filter when filter is not defined', async () => {
+    await createTestEntities();
+    await opts.assertAllEntitiesFilter(undefined);
+  });
+
   it('should not filter when using no filter', async () => {
     await createTestEntities();
     await opts.assertAllEntitiesFilter({});
   });
 
-  it('should not filter when using no filter', async () => {
+  it('should return no entities when using a filter matching none', async () => {
     await createTestEntities();
     await opts.assertNoEntityFilter({ stringProp: 'c' });
   });

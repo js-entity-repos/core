@@ -1,8 +1,10 @@
 import Entity from '../types/Entity';
+import Filter from '../types/Filter';
 
 export interface Opts<E extends Entity> {
   readonly id: string;
   readonly patch: Partial<E>;
+  readonly filter?: Filter<E>;
 }
 
 export interface Result<E extends Entity> {

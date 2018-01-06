@@ -2,9 +2,7 @@ import 'mocha'; // tslint:disable-line:no-import-side-effect
 import * as assert from 'power-assert';
 import Facade from '../../Facade';
 import Cursor from '../../types/Cursor';
-import Filter from '../../types/Filter';
 import Pagination from '../../types/Pagination';
-import Sort from '../../types/Sort';
 import { TestEntity, testEntity } from '../utils/testEntity';
 
 export default (facade: Facade<TestEntity>) => {
@@ -12,8 +10,6 @@ export default (facade: Facade<TestEntity>) => {
   const secondId = 'test_id_2';
   const firstEntity = { ...testEntity, id: firstId };
   const secondEntity = { ...testEntity, id: secondId };
-  const sort: Sort<TestEntity> = { id: true };
-  const filter: Filter<TestEntity> = {};
 
   const createTestEntities = async () => {
     await facade.createEntity({ id: firstId, entity: firstEntity });
@@ -22,13 +18,19 @@ export default (facade: Facade<TestEntity>) => {
 
   const paginate = (cursor: Cursor, forward: boolean) => {
     const pagination: Pagination = { cursor, forward, limit: 1 };
-    return facade.getEntities({ filter, sort, pagination });
+    return facade.getEntities({ pagination });
   };
+
+  it('should return all entities when pagination is not defined', async () => {
+    await createTestEntities();
+    const result = await facade.getEntities({});
+    assert.deepEqual(result.entities, [firstEntity]);
+  });
 
   it('should return first entity when there are two entities limitted to 1', async () => {
     await createTestEntities();
     const pagination: Pagination = { cursor: undefined, forward: true, limit: 1 };
-    const result = await facade.getEntities({ filter, sort, pagination });
+    const result = await facade.getEntities({ pagination });
     assert.deepEqual(result.entities, [firstEntity]);
   });
 
