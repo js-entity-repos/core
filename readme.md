@@ -9,7 +9,7 @@
 The project has some similarities with parts of the [FeathersJS framework](feathersjs.com), but unfortunately I've found the following issues with FeathersJS.
 
 - Their pagination uses skip and limit instead of cursors which causes [issues as discussed by Rakhitha Nimesh](https://www.sitepoint.com/paginating-real-time-data-cursor-based-pagination/).
-- Their service interface is missing some methods provided in the [Facade](./docs/facade.md) here.
+- Their service interface is missing some functions provided in the [Facade](./docs/facade.md) here.
 - Their errors take messages instead of parameters making it harder to support localisation.
 
 ### Thanks
