@@ -5,9 +5,9 @@ import Pagination from '../types/Pagination';
 import Sort from '../types/Sort';
 
 export interface Opts<E extends Entity> {
-  readonly filter: Filter<E>;
-  readonly sort: Sort<E>;
-  readonly pagination: Pagination;
+  readonly filter?: Filter<E>;
+  readonly sort?: Sort<E>;
+  readonly pagination?: Pagination;
 }
 
 export interface Result<E extends Entity> {

@@ -6,11 +6,10 @@ The facade contains common functions for storage and retrieval of entities from 
 - [createEntity](./functions.md#createentity)
 - [getEntities](./functions.md#getentities)
 - [getEntity](./functions.md#getentity)
-- [overwriteEntity](./functions.md#overwriteentity)
+- [replaceEntity](./functions.md#replaceentity)
 - [patchEntity](./functions.md#patchentity)
 - [removeEntities](./functions.md#removeentities)
 - [removeEntity](./functions.md#removeentity)
-- [upsertEntity](./functions.md#upsertentity)
 
 The functions have some common options that they use.
 

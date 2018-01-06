@@ -6,11 +6,10 @@ The [facade](./facade.md) contains common functions for storage and retrieval of
 - [createEntity](#createentity)
 - [getEntities](#getentities)
 - [getEntity](#getentity)
-- [overwriteEntity](#overwriteentity)
+- [replaceEntity](#replaceentity)
 - [patchEntity](#patchentity)
 - [removeEntities](#removeentities)
 - [removeEntity](#removeentity)
-- [upsertEntity](#upsertentity)
 
 ### countEntities
 Counts the number of entities that match the `filter` option.
@@ -27,10 +26,19 @@ This package contains the [count entities tests](../src/tests/countEntities) and
 Creates a new entity using the `entity` option if no entity exists that matches the `id` option.
 
 ```ts
-const { entity } = await facade.createEntity({
-  id: 'example_id',
-  entity: { id: 'example_id', foo: 'bar' },
-});
+import ConflictingEntityError from 'js-entity-repos/core/dist/errors/ConflictingEntityError';
+
+try {
+  const { entity } = await facade.createEntity({
+    id: 'example_id',
+    entity: { id: 'example_id', foo: 'bar' },
+  });
+} catch (err) {
+  if (err instanceof ConflictingEntityError) {
+    // An entity with the given id already exists.
+  }
+  throw err;
+}
 ```
 
 This package contains the [create entity tests](../src/tests/createEntity) and the [create entity signature](../src/signatures/CreateEntity.ts) for this function.
@@ -59,36 +67,66 @@ const firstPage = await facade.getEntities({
 This package contains the [get entities tests](../src/tests/getEntities) and the [get entities signature](../src/signatures/GetEntities.ts) for this function.
 
 ### getEntity
-Retrieves a single entity that matches the `id` option.
+Retrieves a single entity that matches the `id` and `filter` options.
 
 ```ts
-const { entity } = await facade.getEntity({
-  id: 'example_id',
-});
+import MissingEntityError from 'js-entity-repos/core/dist/errors/MissingEntityError';
+
+try {
+  const { entity } = await facade.getEntity({
+    id: 'example_id',
+    filter: { foo: 'bar' },
+  });
+} catch (err) {
+  if (err instanceof MissingEntityError) {
+    // No entity exists that matches the given id and filter options.
+  }
+  throw err;
+}
 ```
 
 This package contains the [get entity tests](../src/tests/getEntity) and the [get entity signature](../src/signatures/GetEntity.ts) for this function.
 
-### overwriteEntity
-For an entity that matches the `id` option, it changes all of an entity's properties using the `entity` option.
+### replaceEntity
+For an entity that matches the `id` and `filter` options, it changes all of an entity's properties using the `entity` option.
 
 ```ts
-const { entity } = await facade.overwriteEntity({
-  id: 'example_id',
-  entity: { id: 'example_id', foo: 'bar' },
-});
+import MissingEntityError from 'js-entity-repos/core/dist/errors/MissingEntityError';
+
+try {
+  const { entity } = await facade.replaceEntity({
+    id: 'example_id',
+    entity: { id: 'example_id', foo: 'bar' },
+    filter: { foo: 'bar' },
+  });
+} catch (err) {
+  if (err instanceof MissingEntityError) {
+    // No entity exists that matches the given id and filter options.
+  }
+  throw err;
+}
 ```
 
-This package contains the [overwrite entity tests](../src/tests/overwriteEntity) and the [overwrite entity signature](../src/signatures/OverwriteEntity.ts) for this function.
+This package contains the [replace entity tests](../src/tests/replaceEntity) and the [replace entity signature](../src/signatures/ReplaceEntity.ts) for this function.
 
 ### patchEntity
-For an entity that matches the `id` option, it changes some of an entity's properties using the `patch` option.
+For an entity that matches the `id` and `filter` options, it changes some of an entity's properties using the `patch` option.
 
 ```ts
-const { entity } = await facade.patchEntity({
-  id: 'example_id',
-  patch: { foo: 'bar' },
-});
+import MissingEntityError from 'js-entity-repos/core/dist/errors/MissingEntityError';
+
+try {
+  const { entity } = await facade.patchEntity({
+    id: 'example_id',
+    patch: { foo: 'bar' },
+    filter: { foo: 'bar' },
+  });
+} catch (err) {
+  if (err instanceof MissingEntityError) {
+    // No entity exists that matches the given id and filter options.
+  }
+  throw err;
+}
 ```
 
 This package contains the [patch entity tests](../src/tests/patchEntity) and the [patch entity signature](../src/signatures/PatchEntity.ts) for this function.
@@ -105,24 +143,22 @@ await facade.removeEntities({
 This package contains the [remove entities tests](../src/tests/removesEntities) and the [remove entities signature](../src/signatures/RemoveEntities.ts) for this function.
 
 ### removeEntity
-Removes an entity that matches the `id` option.
+Removes an entity that matches the `id` and `filter` options.
 
 ```ts
-await facade.removeEntity({
-  id: 'example_id',
-});
+import MissingEntityError from 'js-entity-repos/core/dist/errors/MissingEntityError';
+
+try {
+  await facade.removeEntity({
+    id: 'example_id',
+    filter: { foo: 'bar' },
+  });
+} catch (err) {
+  if (err instanceof MissingEntityError) {
+    // No entity exists that matches the given id and filter options.
+  }
+  throw err;
+}
 ```
 
 This package contains the [remove entity tests](../src/tests/removesEntity) and the [remove entity signature](../src/signatures/RemoveEntity.ts) for this function.
-
-### upsertEntity
-Creates an entity when no entity exists that matches the `id` option. Otherwise, it overwrites all of the properties for an entity that matches the `id` option.
-
-```ts
-await facade.upsertEntity({
-  id: 'example_id',
-  entity: { id: 'example_id', foo: 'bar' },
-});
-```
-
-This package contains the [upsert entity tests](../src/tests/upsertsEntity) and the [upsert entity signature](../src/signatures/UpsertEntity.ts) for this function.

@@ -5,7 +5,7 @@ import filterTest from './filterTest';
 import idTest from './idTest';
 
 export default (facade: Facade<TestEntity>) => {
-  describe('patchEntity', () => {
+  describe('replaceEntity', () => {
     idTest(facade);
     filterTest(facade);
   });
