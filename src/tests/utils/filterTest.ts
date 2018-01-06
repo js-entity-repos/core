@@ -1,20 +1,20 @@
 import 'mocha'; // tslint:disable-line:no-import-side-effect
 import Facade from '../../Facade';
 import Filter from '../../types/Filter';
-import { TestEntity, testEntity, TestId } from '../utils/testEntity';
+import { TestEntity, testEntity } from '../utils/testEntity';
 
 export type FilterAsserter = (filter: Filter<TestEntity>) => Promise<void>;
 
 export interface Opts {
-  readonly facade: Facade<TestId, TestEntity>;
+  readonly facade: Facade<TestEntity>;
   readonly assertFirstEntityFilter: FilterAsserter;
   readonly assertNoEntityFilter: FilterAsserter;
   readonly assertAllEntitiesFilter: FilterAsserter;
 }
-const firstId = { id: 'test_id_1' };
-const secondId = { id: 'test_id_2' };
-export const firstEntity = { ...testEntity, ...firstId, stringProp: 'a', numberProp: 1 };
-export const secondEntity = { ...testEntity, ...secondId, stringProp: 'b', numberProp: 2 };
+const firstId = 'test_id_1';
+const secondId = 'test_id_2';
+export const firstEntity = { ...testEntity, id: firstId, stringProp: 'a', numberProp: 1 };
+export const secondEntity = { ...testEntity, id: secondId, stringProp: 'b', numberProp: 2 };
 
 export default (opts: Opts) => {
   const createTestEntities = async () => {

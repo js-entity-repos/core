@@ -1,11 +1,12 @@
+import Entity from '../types/Entity';
 import Filter from '../types/Filter';
 
-export interface Opts<Entity> {
-  readonly filter: Filter<Entity>;
+export interface Opts<E extends Entity> {
+  readonly filter: Filter<E>;
 }
 
 export type Result = void;
 
-export type Signature<Entity> = (opts: Opts<Entity>) => Promise<Result>;
+export type Signature<E extends Entity> = (opts: Opts<E>) => Promise<Result>;
 
 export default Signature;

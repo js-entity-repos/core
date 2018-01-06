@@ -2,9 +2,9 @@ import 'mocha'; // tslint:disable-line:no-import-side-effect
 import * as assert from 'power-assert';
 import Facade from '../../Facade';
 import filterTest from '../utils/filterTest';
-import { TestEntity, TestId } from '../utils/testEntity';
+import { TestEntity } from '../utils/testEntity';
 
-export default (facade: Facade<TestId, TestEntity>) => {
+export default (facade: Facade<TestEntity>) => {
   describe('countEntities', () => {
     filterTest({
       assertAllEntitiesFilter: async (filter) => {

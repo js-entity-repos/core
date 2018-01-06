@@ -3,9 +3,9 @@ import 'mocha'; // tslint:disable-line:no-import-side-effect
 import * as assert from 'power-assert';
 import MissingEntityError from '../../errors/MissingEntityError';
 import Facade from '../../Facade';
-import { TestEntity, testEntity, testId, TestId } from '../utils/testEntity';
+import { TestEntity, testEntity, testId } from '../utils/testEntity';
 
-export default (facade: Facade<TestId, TestEntity>) => {
+export default (facade: Facade<TestEntity>) => {
   describe('overwriteEntity', () => {
     it('should error when identifier does not exist', async () => {
       const promise = facade.overwriteEntity({ id: testId, entity: testEntity });
@@ -14,8 +14,8 @@ export default (facade: Facade<TestId, TestEntity>) => {
 
     it('should overwrite when identifier does exist', async () => {
       const testOverwrite: TestEntity = {
-        ...testId,
         booleanProp: false,
+        id: testId,
         numberProp: 2,
         stringProp: 'test_string_prop_overwrite',
       };

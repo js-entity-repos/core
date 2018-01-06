@@ -5,13 +5,13 @@ import Cursor from '../../types/Cursor';
 import Filter from '../../types/Filter';
 import Pagination from '../../types/Pagination';
 import Sort from '../../types/Sort';
-import { TestEntity, testEntity, TestId } from '../utils/testEntity';
+import { TestEntity, testEntity } from '../utils/testEntity';
 
-export default (facade: Facade<TestId, TestEntity>) => {
-  const firstId = { id: 'test_id_1' };
-  const secondId = { id: 'test_id_2' };
-  const firstEntity = { ...testEntity, ...firstId };
-  const secondEntity = { ...testEntity, ...secondId };
+export default (facade: Facade<TestEntity>) => {
+  const firstId = 'test_id_1';
+  const secondId = 'test_id_2';
+  const firstEntity = { ...testEntity, id: firstId };
+  const secondEntity = { ...testEntity, id: secondId };
   const sort: Sort<TestEntity> = { id: true };
   const filter: Filter<TestEntity> = {};
 

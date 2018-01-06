@@ -4,13 +4,13 @@ import Facade from '../../Facade';
 import Filter from '../../types/Filter';
 import Pagination from '../../types/Pagination';
 import Sort from '../../types/Sort';
-import { TestEntity, testEntity, TestId } from '../utils/testEntity';
+import { TestEntity, testEntity } from '../utils/testEntity';
 
-export default (facade: Facade<TestId, TestEntity>) => {
-  const firstId = { id: 'test_id_1' };
-  const secondId = { id: 'test_id_2' };
-  const firstEntity = { ...testEntity, ...firstId, stringProp: 'a', numberProp: 1 };
-  const secondEntity = { ...testEntity, ...secondId, stringProp: 'b', numberProp: 2 };
+export default (facade: Facade<TestEntity>) => {
+  const firstId = 'test_id_1';
+  const secondId = 'test_id_2';
+  const firstEntity = { ...testEntity, id: firstId, stringProp: 'a', numberProp: 1 };
+  const secondEntity = { ...testEntity, id: secondId, stringProp: 'b', numberProp: 2 };
 
   const assertSort = async (sortedEntities: TestEntity[], sort: Sort<TestEntity>) => {
     const filter: Filter<TestEntity> = {};

@@ -14,8 +14,8 @@ The facade contains common functions for storage and retrieval of entities from 
 
 The functions have some common options that they use.
 
-- [Entity](./options.md#entity)
 - [Id](./options.md#id)
+- [Entity](./options.md#entity)
 - [Patch](./options.md#patch)
 - [Filter](./options.md#filter)
 - [Sort](./options.md#sort)

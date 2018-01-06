@@ -1,9 +1,9 @@
-export interface Opts<Id> {
-  readonly id: Id;
+export interface Opts {
+  readonly id: string;
 }
 
 export type Result = void;
 
-export type Signature<Id> = (opts: Opts<Id>) => Promise<Result>;
+export type Signature = (opts: Opts) => Promise<Result>;
 
 export default Signature;

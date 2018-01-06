@@ -4,9 +4,9 @@ import Facade from '../../Facade';
 import Pagination from '../../types/Pagination';
 import Sort from '../../types/Sort';
 import filterTest, { firstEntity, secondEntity } from '../utils/filterTest';
-import { TestEntity, TestId } from '../utils/testEntity';
+import { TestEntity } from '../utils/testEntity';
 
-export default (facade: Facade<TestId, TestEntity>) => {
+export default (facade: Facade<TestEntity>) => {
   const sort: Sort<TestEntity> = {};
   const pagination: Pagination = { cursor: undefined, forward: true, limit: 2 };
 

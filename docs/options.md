@@ -10,23 +10,17 @@ The [facade](./facade.md) [functions](./functions.md) have some common options t
 - [Pagination](#pagination)
 
 ### Id
-This is an object that contains only the properties required to distinctly identify an entity. In most common cases there is a single property making the [unique key](https://en.wikipedia.org/wiki/Unique_key) so it will likely just contain the `id` property. However, for entities with multiple properties making the unique key it will contain those properties.
-
-This interface is user-defined hence not contained in this package, the interface below demonstrates what this will look like in most cases.
-
-```ts
-interface Id {
-  readonly id: string;
-}
-```
+This is a string that uniquely identifies an entity.
 
 ### Entity
 This is an object that contains all of the entity's properties. The word "entity" has been borrowed from [Entity-Relationship Models/Diagrams](https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model) and has been used instead of the word "model" to avoid confusion with MVC.
 
-This interface is user-defined hence not contained in this package, the interface below demonstrates what this might look like for a todo entity and extends the [Id interface from the Id example](#id).
+This interface is user-defined hence not contained in this package, the interface below demonstrates what this might look like for a todo entity and extends the [TypeScript Entity interface](../src/types/Entity.ts) defined in this package which contains the `id` property.
 
 ```ts
-interface TodoEntity extends Id {
+import Entity from '@js-entity-repos/core/dist/types/Entity';
+
+interface TodoEntity extends Entity {
   readonly description: string;
   readonly completed: boolean;
 }
@@ -44,8 +38,8 @@ This is an object where a key represents the entity property to be sorted and th
 This package contains the [TypeScript Sort type definition](../src/types/Sort.ts).
 
 ### Pagination
-This is an object with three properties, `limit`, `forward`, and `cursor`. The `limit` property defines how many entities to return (maximum). The `forward` property defines whether the entities should be iterate through the entities forwards (when `true`) or backwards (when `false`) from the `cursor`. The `cursor` property defines where to start iterating through the entities.
+This is an object with three properties, `limit`, `forward`, and `cursor`. The `limit` property defines how many entities to return (maximum). The `forward` property defines whether the entities should be iterated through forwards (when `true`) or backwards (when `false`) from the `cursor`. The `cursor` property defines where to start iterating through the entities. Cursors have been used instead of `skip` and `limit` to avoid the [pagination issues discussed by Rakhitha Nimesh](https://www.sitepoint.com/paginating-real-time-data-cursor-based-pagination/).
 
-Concrete implementations of the facade can use the [`createCursorFromEntity`](../src/utils/createCursorFromEntity) and [`createPaginationFilter`](../src/utils/createPaginationFilter) util functions to generate cursors.
+Concrete implementations of the facade can use the [`createCursorFromEntity`](../src/utils/createCursorFromEntity) and [`createPaginationFilter`](../src/utils/createPaginationFilter) utility functions to generate cursors.
 
 This package also contains the [TypeScript Pagination interface](../src/types/Pagination.ts) and the [TypeScript Cursor type definition](../src/types/Cursor.ts).

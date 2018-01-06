@@ -28,7 +28,7 @@ Creates a new entity using the `entity` option if no entity exists that matches 
 
 ```ts
 const { entity } = await facade.createEntity({
-  id: { id: 'example_id' },
+  id: 'example_id',
   entity: { id: 'example_id', foo: 'bar' },
 });
 ```
@@ -63,7 +63,7 @@ Retrieves a single entity that matches the `id` option.
 
 ```ts
 const { entity } = await facade.getEntity({
-  id: { id: 'example_id' },
+  id: 'example_id',
 });
 ```
 
@@ -74,7 +74,7 @@ For an entity that matches the `id` option, it changes all of an entity's proper
 
 ```ts
 const { entity } = await facade.overwriteEntity({
-  id: { id: 'example_id' },
+  id: 'example_id',
   entity: { id: 'example_id', foo: 'bar' },
 });
 ```
@@ -86,7 +86,7 @@ For an entity that matches the `id` option, it changes some of an entity's prope
 
 ```ts
 const { entity } = await facade.patchEntity({
-  id: { id: 'example_id' },
+  id: 'example_id',
   patch: { foo: 'bar' },
 });
 ```
@@ -109,7 +109,7 @@ Removes an entity that matches the `id` option.
 
 ```ts
 await facade.removeEntity({
-  id: { id: 'example_id' },
+  id: 'example_id',
 });
 ```
 
@@ -120,7 +120,7 @@ Creates an entity when no entity exists that matches the `id` option. Otherwise,
 
 ```ts
 await facade.upsertEntity({
-  id: { id: 'example_id' },
+  id: 'example_id',
   entity: { id: 'example_id', foo: 'bar' },
 });
 ```

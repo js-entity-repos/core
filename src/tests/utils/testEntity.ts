@@ -1,20 +1,16 @@
-export interface TestId {
-  readonly id: string;
-}
+import Entity from '../../types/Entity';
 
-export interface TestEntity extends TestId {
+export interface TestEntity extends Entity {
   readonly stringProp: string;
   readonly numberProp: number;
   readonly booleanProp: boolean;
 }
 
-export const testId: TestId = {
-  id: 'test_id',
-};
+export const testId = 'test_id';
 
 export const testEntity: TestEntity = {
-  ...testId,
   booleanProp: true,
+  id: testId,
   numberProp: 1,
   stringProp: 'test_string_prop',
 };
