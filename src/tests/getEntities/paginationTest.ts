@@ -24,7 +24,7 @@ export default (facade: Facade<TestEntity>) => {
   it('should return all entities when pagination is not defined', async () => {
     await createTestEntities();
     const result = await facade.getEntities({});
-    assert.deepEqual(result.entities, [firstEntity]);
+    assert.deepEqual(result.entities, [firstEntity, secondEntity]);
   });
 
   it('should return first entity when there are two entities limitted to 1', async () => {
