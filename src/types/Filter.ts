@@ -22,9 +22,6 @@ export interface ConditionFilter<E extends Entity> {
   readonly $nor?: Filter<E>[];
 }
 
-export type Filter<E extends Entity> = (
-  EntityFilter<E> &
-  ConditionFilter<E>
-);
+export type Filter<E extends Entity> = EntityFilter<E> | ConditionFilter<E>;
 
 export default Filter;
