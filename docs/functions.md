@@ -6,10 +6,10 @@ The [facade](./facade.md) contains common functions for storage and retrieval of
 - [createEntity](#createentity)
 - [getEntities](#getentities)
 - [getEntity](#getentity)
-- [replaceEntity](#replaceentity)
 - [patchEntity](#patchentity)
 - [removeEntities](#removeentities)
 - [removeEntity](#removeentity)
+- [replaceEntity](#replaceentity)
 
 ### countEntities
 Counts the number of entities that match the [`filter`](./filter.md) option.
@@ -87,28 +87,6 @@ try {
 
 This package contains the [get entity tests](../src/tests/getEntity) and the [get entity signature](../src/signatures/GetEntity.ts) for this function.
 
-### replaceEntity
-For an entity that matches the [`id`](./options.md#id) and [`filter`](./filter.md) options, it changes all of an entity's properties using the [`entity`](./options.md#entity) option.
-
-```ts
-import MissingEntityError from 'js-entity-repos/core/dist/errors/MissingEntityError';
-
-try {
-  const { entity } = await facade.replaceEntity({
-    id: 'example_id',
-    entity: { id: 'example_id', foo: 'bar' },
-    filter: { foo: 'bar' },
-  });
-} catch (err) {
-  if (err instanceof MissingEntityError) {
-    // No entity exists that matches the given id and filter options.
-  }
-  throw err;
-}
-```
-
-This package contains the [replace entity tests](../src/tests/replaceEntity) and the [replace entity signature](../src/signatures/ReplaceEntity.ts) for this function.
-
 ### patchEntity
 For an entity that matches the [`id`](./options.md#id) and [`filter`](./filter.md) options, it changes some of an entity's properties using the [`patch`](./options.md#patch) option.
 
@@ -162,3 +140,25 @@ try {
 ```
 
 This package contains the [remove entity tests](../src/tests/removesEntity) and the [remove entity signature](../src/signatures/RemoveEntity.ts) for this function.
+
+### replaceEntity
+For an entity that matches the [`id`](./options.md#id) and [`filter`](./filter.md) options, it changes all of an entity's properties using the [`entity`](./options.md#entity) option.
+
+```ts
+import MissingEntityError from 'js-entity-repos/core/dist/errors/MissingEntityError';
+
+try {
+  const { entity } = await facade.replaceEntity({
+    id: 'example_id',
+    entity: { id: 'example_id', foo: 'bar' },
+    filter: { foo: 'bar' },
+  });
+} catch (err) {
+  if (err instanceof MissingEntityError) {
+    // No entity exists that matches the given id and filter options.
+  }
+  throw err;
+}
+```
+
+This package contains the [replace entity tests](../src/tests/replaceEntity) and the [replace entity signature](../src/signatures/ReplaceEntity.ts) for this function.
