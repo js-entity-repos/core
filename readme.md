@@ -1,5 +1,5 @@
 # core
-> Provides common interfaces and tests for concrete implementations of js-entity-repos.
+> Provides common interfaces and tests for concrete implementations of js-entity-repos. The js-entity-repos use the [repository design pattern](https://msdn.microsoft.com/en-us/library/ff649690.aspx) and attempt to reduce the code required in projects with entities.
 
 ### Usage
 - Install it with `npm i @js-entity-repos/core`.
