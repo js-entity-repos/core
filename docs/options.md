@@ -5,7 +5,7 @@ The [facade](./facade.md) [functions](./functions.md) have some common options t
 - [Id](#id)
 - [Entity](#entity)
 - [Patch](#patch)
-- [Filter](#filter)
+- [Filter](./filter.md)
 - [Sort](#sort)
 - [Pagination](#pagination)
 
