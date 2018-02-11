@@ -11,15 +11,6 @@ The facade contains common functions for storage and retrieval of entities from 
 - [removeEntities](./functions.md#removeentities)
 - [removeEntity](./functions.md#removeentity)
 
-The functions have some common options that they use.
-
-- [Id](./options.md#id)
-- [Entity](./options.md#entity)
-- [Patch](./options.md#patch)
-- [Filter](./options.md#filter)
-- [Sort](./options.md#sort)
-- [Pagination](./options.md#pagination)
-
 The [facade in this package is a TypeScript interface](../src/Facade.ts), but concrete implementations of the interface are listed below.
 
 - [Memory](https://github.com/js-entity-repos/memory) - This is useful for testing client/server side.
