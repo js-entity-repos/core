@@ -3,7 +3,7 @@
 
 ### Usage
 - Install it with `npm i @js-entity-repos/core`.
-- Understand it by reading the [documenation](./docs/facade.md).
+- Understand it by reading the [documentation](./docs/facade.md).
 
 ### FeathersJS
 The project has some similarities with parts of the [FeathersJS framework](feathersjs.com), but unfortunately I've found the following issues with FeathersJS.
