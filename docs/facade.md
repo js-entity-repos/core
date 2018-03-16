@@ -16,4 +16,5 @@ The [facade in this package is a TypeScript interface](../src/Facade.ts), but co
 - [Memory](https://github.com/js-entity-repos/memory) - This is useful for testing client/server side.
 - [Mongo](https://github.com/js-entity-repos/mongo) - Uses the MongoDB Node JS driver.
 - [Knex](https://github.com/js-entity-repos/knex) - For SQL databases.
-- [Axios](https://github.com/js-entity-repos/axios) - For HTTP requests to a HTTP interface for entities.
+- [Axios](https://github.com/js-entity-repos/axios) - For sending HTTP requests to a HTTP interface for entities.
+- [Express](https://github.com/js-entity-repos/express) - For receiving HTTP requests at a HTTP interface for entities.
