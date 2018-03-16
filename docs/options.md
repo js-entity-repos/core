@@ -21,7 +21,7 @@ This is an object that contains all of the entity's properties. The word "entity
 
 This interface is user-defined hence not contained in this package, the interface below demonstrates what this might look like for a todo entity and extends the [TypeScript Entity interface](../src/types/Entity.ts) defined in this package. Note that the Entity interface already contains the [`id`](#id) property.
 
-When using JS-Entity-Repos all entities should have a single unique identifier (the [`id`](#id) property) because the Facade functions do not support composite keys. There are a number of pros and cons to this that you can discover with a little Googling, but be aware that some databases actually enforce a single identifier anyway (such as Mongo). The main reason composite keys are not supported here is that it simplifies routing in HTTP implementations of the Facade such as [Axios](https://github.com/js-entity-repos/axios) and [Express](https://github.com/js-entity-repos/express).
+When using js-entity-repos all entities should have a single unique identifier (the [`id`](#id) property) because the Facade functions do not support composite keys. There are a number of pros and cons to this that you can discover with a little Googling, but be aware that some databases actually enforce a single identifier anyway (such as Mongo). The main reason composite keys are not supported here is that it simplifies routing in HTTP implementations of the Facade such as [Axios](https://github.com/js-entity-repos/axios) and [Express](https://github.com/js-entity-repos/express).
 
 ```ts
 import Entity from '@js-entity-repos/core/dist/types/Entity';
