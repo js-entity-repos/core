@@ -101,7 +101,7 @@ The filter below is comprehensive example using all of the operators.
 
 
 ### Sort
-This is an object where a key represents the entity property to be sorted and the value represents the direction to sort. The value should be `'asc'` to sort in ascending order and `'desc'` to sort in descending order. The properties are sorted in order of their definition in the sort option, for example, the following sort option `{ createdAt: false, id: true }` will sort by the `createdAt` property first and then the the `id` property.
+This is an object where a key represents the entity property to be sorted and the value represents the direction to sort. The value should be `'asc'` to sort in ascending order and `'desc'` to sort in descending order. The properties are sorted in order of their definition in the sort option, for example, the following sort option `{ createdAt: 'desc', id: 'asc' }` will sort by the `createdAt` property first and then the the `id` property.
 
 This package contains the [TypeScript Sort type definition](../src/types/Sort.ts). It also contains [constants for `'asc'` and `'desc'`](../src/types/SortOrder.ts) that should always be used to avoid breaking changes in the future.
 
