@@ -101,13 +101,13 @@ The filter below is comprehensive example using all of the operators.
 
 
 ### Sort
-This is an object where a key represents the entity property to be sorted and the value represents the direction to sort. The value should be `true` to sort in ascending order and `false` to sort in descending order. The properties are sorted in order of their definition in the sort option, for example, the following sort option `{ createdAt: false, id: true }` will sort by the `createdAt` property first and then the the `id` property.
+This is an object where a key represents the entity property to be sorted and the value represents the direction to sort. The value should be `'asc'` to sort in ascending order and `'desc'` to sort in descending order. The properties are sorted in order of their definition in the sort option, for example, the following sort option `{ createdAt: false, id: true }` will sort by the `createdAt` property first and then the the `id` property.
 
-This package contains the [TypeScript Sort type definition](../src/types/Sort.ts).
+This package contains the [TypeScript Sort type definition](../src/types/Sort.ts). It also contains [constants for `'asc'` and `'desc'`](../src/types/SortOrder.ts) that should always be used to avoid breaking changes in the future.
 
 ### Pagination
-This is an object with three properties, `limit`, `forward`, and `cursor`. The `limit` property defines how many entities to return (maximum). The `forward` property defines whether the entities should be iterated through forwards (when `true`) or backwards (when `false`) from the `cursor`. The `cursor` property defines where to start iterating through the entities. Cursors have been used instead of `skip` and `limit` to avoid the [pagination issues discussed by Rakhitha Nimesh](https://www.sitepoint.com/paginating-real-time-data-cursor-based-pagination/).
+This is an object with three properties, `limit`, `direction`, and `cursor`. The `limit` property defines how many entities to return (maximum). The `direction` property defines whether the entities should be iterated through forwards (when `'forward'`) or backwards (when `'backward'`) from the `cursor`. The `cursor` property defines where to start iterating through the entities. Cursors have been used instead of `skip` and `limit` to avoid the [pagination issues discussed by Rakhitha Nimesh](https://www.sitepoint.com/paginating-real-time-data-cursor-based-pagination/).
 
 Concrete implementations of the facade can use the [`createCursorFromEntity`](../src/utils/createCursorFromEntity) and [`createPaginationFilter`](../src/utils/createPaginationFilter) utility functions to generate cursors.
 
-This package also contains the [TypeScript Pagination interface](../src/types/Pagination.ts) and the [TypeScript Cursor type definition](../src/types/Cursor.ts).
+This package contains the [TypeScript Pagination interface](../src/types/Pagination.ts) and the [TypeScript Cursor type definition](../src/types/Cursor.ts). It also contains [constants for `'forward'` and `'backward'`](../src/types/PaginationDirection.ts) that should always be used to avoid breaking changes in the future.

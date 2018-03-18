@@ -2,6 +2,7 @@ import 'mocha'; // tslint:disable-line:no-import-side-effect
 import * as assert from 'power-assert';
 import Facade from '../../Facade';
 import Sort from '../../types/Sort';
+import { asc, desc } from '../../types/SortOrder';
 import { TestEntity, testEntity } from '../utils/testEntity';
 
 export default (facade: Facade<TestEntity>) => {
@@ -26,36 +27,36 @@ export default (facade: Facade<TestEntity>) => {
   it('should sort by one ascending property when entities are ordered', async () => {
     await facade.createEntity({ id: firstId, entity: firstEntity });
     await facade.createEntity({ id: secondId, entity: secondEntity });
-    await assertSort([firstEntity, secondEntity], { stringProp: true });
+    await assertSort([firstEntity, secondEntity], { stringProp: asc });
   });
 
   it('should sort by one ascending property when entities are unordered', async () => {
     await facade.createEntity({ id: secondId, entity: secondEntity });
     await facade.createEntity({ id: firstId, entity: firstEntity });
-    await assertSort([firstEntity, secondEntity], { stringProp: true });
+    await assertSort([firstEntity, secondEntity], { stringProp: asc });
   });
 
   it('should sort by one descending property when entities are ordered', async () => {
     await facade.createEntity({ id: secondId, entity: secondEntity });
     await facade.createEntity({ id: firstId, entity: firstEntity });
-    await assertSort([secondEntity, firstEntity], { stringProp: false });
+    await assertSort([secondEntity, firstEntity], { stringProp: desc });
   });
 
   it('should sort by one descending property when entities are unordered', async () => {
     await facade.createEntity({ id: firstId, entity: firstEntity });
     await facade.createEntity({ id: secondId, entity: secondEntity });
-    await assertSort([secondEntity, firstEntity], { stringProp: false });
+    await assertSort([secondEntity, firstEntity], { stringProp: desc });
   });
 
   it('should sort by two properties when ascending first and descending second', async () => {
     await facade.createEntity({ id: firstId, entity: firstEntity });
     await facade.createEntity({ id: secondId, entity: secondEntity });
-    await assertSort([firstEntity, secondEntity], { stringProp: true, numberProp: false });
+    await assertSort([firstEntity, secondEntity], { stringProp: asc, numberProp: desc });
   });
 
   it('should sort by two properties when descending first and ascending second', async () => {
     await facade.createEntity({ id: firstId, entity: firstEntity });
     await facade.createEntity({ id: secondId, entity: secondEntity });
-    await assertSort([secondEntity, firstEntity], { stringProp: false, numberProp: true });
+    await assertSort([secondEntity, firstEntity], { stringProp: desc, numberProp: asc });
   });
 };
