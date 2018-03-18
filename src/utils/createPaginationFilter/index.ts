@@ -4,7 +4,9 @@ import Entity from '../../types/Entity';
 // tslint:disable-next-line:no-unused
 import Filter, { ConditionFilter, EntityFilter } from '../../types/Filter';
 import Pagination from '../../types/Pagination';
+import { forward } from '../../types/PaginationDirection';
 import Sort from '../../types/Sort';
+import { asc } from '../../types/SortOrder';
 
 const xor = (conditionA: boolean, conditionB: boolean) => {
   return (conditionA && !conditionB) || (!conditionA && conditionB);
@@ -16,8 +18,11 @@ export default <E extends Entity>(pagination: Pagination, sort: Sort<E>): Filter
   }
   const cursorObj = JSON.parse(atob(pagination.cursor));
   const filter = mapValues(cursorObj, (cursorValue, sortKey) => {
-    const forward = !xor(get(sort, sortKey), pagination.forward);
-    if (forward) {
+    const ascendingPagination = !xor(
+      get(sort, sortKey) === asc,
+      pagination.direction === forward,
+    );
+    if (ascendingPagination) {
       if (sortKey === 'id') {
         return { $gt: cursorValue };
       } else {
