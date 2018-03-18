@@ -23,6 +23,8 @@ This interface is user-defined hence not contained in this package, the interfac
 
 When using js-entity-repos all entities should have a single unique identifier (the [`id`](#id) property) because the Facade functions do not support composite keys. There are a number of pros and cons to this that you can discover with a little Googling, but be aware that some databases actually enforce a single identifier anyway (such as Mongo). The main reason composite keys are not supported here is that it simplifies routing in HTTP implementations of the Facade such as [Axios](https://github.com/js-entity-repos/axios) and [Express](https://github.com/js-entity-repos/express).
 
+It's usually useful and recommended to create your own Entity interface to use as a base interface for your entities. This is useful for adding common properties across your entities such as timestamps (like `createdAt` and `updatedAt`). Since the js-entity-repos make no attempt at validation, you might also find it useful to use a validation package like [Rulr](https://www.npmjs.com/package/rulr).
+
 ```ts
 import Entity from '@js-entity-repos/core/dist/types/Entity';
 
