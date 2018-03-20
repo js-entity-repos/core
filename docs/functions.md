@@ -47,20 +47,23 @@ This package contains the [create entity tests](../src/tests/createEntity) and t
 Retreives a sorted paginated array of entities that match the [`filter`](./options.md#filter) option.
 
 ```ts
+import { backward, forward } from 'js-entity-repos/core/dist/types/PaginationDirection';
+import { asc, desc } from 'js-entity-repos/core/dist/types/SortOrder';
+
 const { entities, nextCursor, previousCursor } = await facade.getEntities({
-  filter: { foo: 'bar' },
-  sort: { id: true },
-  pagination: { limit: 10, forward: true, cursor: undefined },
+  filter: { foo: 'demo' },
+  sort: { id: asc, bar: desc },
+  pagination: { limit: 10, direction: forward, cursor: undefined },
 });
 const secondPage = await facade.getEntities({
-  filter: { foo: 'bar' },
-  sort: { id: true },
-  pagination: { limit: 10, forward: true, cursor: nextCursor },
+  filter: { foo: 'demo' },
+  sort: { id: asc, bar: desc },
+  pagination: { limit: 10, direction: forward, cursor: nextCursor },
 });
 const firstPage = await facade.getEntities({
-  filter: { foo: 'bar' },
-  sort: { id: true },
-  pagination: { limit: 10, forward: false, cursor: secondPage.previousCursor },
+  filter: { foo: 'demo' },
+  sort: { id: asc, bar: desc },
+  pagination: { limit: 10, direction: backward, cursor: secondPage.previousCursor },
 });
 ```
 
