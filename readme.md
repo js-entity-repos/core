@@ -4,6 +4,7 @@
 ### Usage
 - Install it with `npm i @js-entity-repos/core`.
 - Understand it by reading the [documentation](./docs/facade.md).
+- See it in action in the [todos example application](https://github.com/js-entity-repos/todos).
 
 ### FeathersJS
 The project has some similarities with parts of the [FeathersJS framework](feathersjs.com), but unfortunately I've found the following issues with FeathersJS.
