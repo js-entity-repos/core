@@ -26,7 +26,7 @@ This package contains the [count entities tests](../src/tests/countEntities) and
 Creates a new entity using the [`entity`](./options.md#entity) option if no entity exists that matches the [`id`](./options.md#id) option.
 
 ```ts
-import ConflictingEntityError from 'js-entity-repos/core/dist/errors/ConflictingEntityError';
+import ConflictingEntityError from '@js-entity-repos/core/dist/errors/ConflictingEntityError';
 
 try {
   const { entity } = await facade.createEntity({
@@ -47,8 +47,8 @@ This package contains the [create entity tests](../src/tests/createEntity) and t
 Retreives a sorted paginated array of entities that match the [`filter`](./options.md#filter) option.
 
 ```ts
-import { backward, forward } from 'js-entity-repos/core/dist/types/PaginationDirection';
-import { asc, desc } from 'js-entity-repos/core/dist/types/SortOrder';
+import { backward, forward } from '@js-entity-repos/core/dist/types/PaginationDirection';
+import { asc, desc } from '@js-entity-repos/core/dist/types/SortOrder';
 
 const { entities, nextCursor, previousCursor } = await facade.getEntities({
   filter: { foo: 'demo' },
@@ -73,7 +73,7 @@ This package contains the [get entities tests](../src/tests/getEntities) and the
 Retrieves a single entity that matches the [`id`](./options.md#id) and [`filter`](./options.md#filter) options.
 
 ```ts
-import MissingEntityError from 'js-entity-repos/core/dist/errors/MissingEntityError';
+import MissingEntityError from '@js-entity-repos/core/dist/errors/MissingEntityError';
 
 try {
   const { entity } = await facade.getEntity({
@@ -94,7 +94,7 @@ This package contains the [get entity tests](../src/tests/getEntity) and the [ge
 For an entity that matches the [`id`](./options.md#id) and [`filter`](./options.md#filter) options, it changes some of an entity's properties using the [`patch`](./options.md#patch) option.
 
 ```ts
-import MissingEntityError from 'js-entity-repos/core/dist/errors/MissingEntityError';
+import MissingEntityError from '@js-entity-repos/core/dist/errors/MissingEntityError';
 
 try {
   const { entity } = await facade.patchEntity({
@@ -127,7 +127,7 @@ This package contains the [remove entities tests](../src/tests/removesEntities) 
 Removes an entity that matches the [`id`](./options.md#id) and [`filter`](./options.md#filter) options.
 
 ```ts
-import MissingEntityError from 'js-entity-repos/core/dist/errors/MissingEntityError';
+import MissingEntityError from '@js-entity-repos/core/dist/errors/MissingEntityError';
 
 try {
   await facade.removeEntity({
@@ -148,7 +148,7 @@ This package contains the [remove entity tests](../src/tests/removesEntity) and 
 For an entity that matches the [`id`](./options.md#id) and [`filter`](./options.md#filter) options, it changes all of an entity's properties using the [`entity`](./options.md#entity) option.
 
 ```ts
-import MissingEntityError from 'js-entity-repos/core/dist/errors/MissingEntityError';
+import MissingEntityError from '@js-entity-repos/core/dist/errors/MissingEntityError';
 
 try {
   const { entity } = await facade.replaceEntity({
