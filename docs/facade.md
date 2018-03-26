@@ -13,9 +13,9 @@ The facade contains common functions for storage and retrieval of entities from 
 
 This package also contains some utility functions outside of the Facade that you might find useful.
 
-- [convertPropertyFilter](./utils.md#convertPropertyFilter)
-- [createCursorFromEntity](./utils.md#createCursorFromEntity)
-- [createPaginationFilter](./utils.md#createPaginationFilter)
+- [convertPropertyFilter](./utils.md#convertpropertyfilter)
+- [createCursorFromEntity](./utils.md#createcursorfromentity)
+- [createPaginationFilter](./utils.md#createpaginationfilter)
 
 The [facade in this package is a TypeScript interface](../src/Facade.ts), but concrete implementations of the interface are listed below.
 
