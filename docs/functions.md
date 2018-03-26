@@ -44,7 +44,7 @@ try {
 This package contains the [create entity tests](../src/tests/createEntity) and the [create entity signature](../src/signatures/CreateEntity.ts) for this function.
 
 ### getEntities
-Retreives a sorted paginated array of entities that match the [`filter`](./options.md#filter) option.
+Retreives a sorted paginated array of entities that match the [`filter`](./options.md#filter) option. Users of this function may want to use the [`createCursorFromEntity` utility function](./utils.md#createcursorfromentity) and may need to use the [`convertPropertyFilter` utility function](./utils.md#convertpropertyfilter). Implementors of this function will need to use the [`createCursorFromEntity`](./utils.md#createcursorfromentity) and [`createPaginationFilter`](./utils.md#createpaginationfilter) utility functions to generate and use cursors.
 
 ```ts
 import { backward, forward } from '@js-entity-repos/core/dist/types/PaginationDirection';
