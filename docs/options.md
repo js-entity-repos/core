@@ -38,7 +38,7 @@ interface TodoEntity extends Entity {
 This is an object containing some of the entity's properties. This package uses [TypeScript's Partial type](https://www.typescriptlang.org/docs/handbook/advanced-types.html) applied to an [Entity](#entity) (using `Partial<Entity>`).
 
 ### Filter
-This is an object that filters the entities. The [filter type definition](../src/types/Filter.ts) currently supports the following operators which have been [borrowed from Mongo](https://docs.mongodb.com/manual/reference/operator/query/). In some cases (like dates) you may need to use the [`convertPropertyFilter` utility function](./utils.md#convertPropertyFilter).
+This is an object that filters the entities. The [filter type definition](../src/types/Filter.ts) currently supports the following operators which have been [borrowed from Mongo](https://docs.mongodb.com/manual/reference/operator/query/). In some cases (like dates) you may need to use the [`convertPropertyFilter` utility function](./utils.md#convertpropertyfilter).
 
 Operator | Description
 --- | ---
@@ -110,6 +110,6 @@ This package contains the [TypeScript Sort type definition](../src/types/Sort.ts
 ### Pagination
 This is an object with three properties, `limit`, `direction`, and `cursor`. The `limit` property defines how many entities to return (maximum). The `direction` property defines whether the entities should be iterated through forwards (when `'forward'`) or backwards (when `'backward'`) from the `cursor`. The `cursor` property defines where to start iterating through the entities. Cursors have been used instead of `skip` and `limit` to avoid the [pagination issues discussed by Rakhitha Nimesh](https://www.sitepoint.com/paginating-real-time-data-cursor-based-pagination/).
 
-Concrete implementations of the facade can use the [`createCursorFromEntity`](./utils.md#createCursorFromEntity) and [`createPaginationFilter`](./utils.md#createPaginationFilter) utility functions to generate cursors.
+Concrete implementations of the facade can use the [`createCursorFromEntity`](./utils.md#createcursorfromentity) and [`createPaginationFilter`](./utils.md#createpaginationfilter) utility functions to generate cursors.
 
 This package contains the [TypeScript Pagination interface](../src/types/Pagination.ts) and the [TypeScript Cursor type definition](../src/types/Cursor.ts). It also contains [constants for `'forward'` and `'backward'`](../src/types/PaginationDirection.ts) that should always be used to avoid breaking changes in the future.
