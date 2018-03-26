@@ -11,6 +11,12 @@ The facade contains common functions for storage and retrieval of entities from 
 - [removeEntities](./functions.md#removeentities)
 - [removeEntity](./functions.md#removeentity)
 
+This package also contains some utility functions outside of the Facade that you might find useful.
+
+- [convertPropertyFilter](./utils.md#convertPropertyFilter)
+- [createCursorFromEntity](./utils.md#createCursorFromEntity)
+- [createPaginationFilter](./utils.md#createPaginationFilter)
+
 The [facade in this package is a TypeScript interface](../src/Facade.ts), but concrete implementations of the interface are listed below.
 
 - [Memory](https://github.com/js-entity-repos/memory) - This is useful for testing client/server side.
