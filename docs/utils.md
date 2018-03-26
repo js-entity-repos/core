@@ -2,9 +2,9 @@
 
 This package contains some common utility functions that can be used by both users and implementors of the [Facade](./facade.md#facade).
 
-- [convertPropertyFilter](#convertPropertyFilter)
-- [createCursorFromEntity](#createCursorFromEntity)
-- [createPaginationFilter](#createPaginationFilter)
+- [convertPropertyFilter](#convertpropertyfilter)
+- [createCursorFromEntity](#createcursorfromentity)
+- [createPaginationFilter](#createpaginationfilter)
 
 ### convertPropertyFilter
 Converts the filter value for a certain property name. For example, if you have a date property on your entity called `createdAt` storing the date at which an entity was created, then if you filter the property using a string (usually via [js-entity-repos/express](https://github.com/js-entity-repos/express)), you can use this util to ensure that the string is converted to a date before using the filter in the database. This is usually used by users of the js-entity-repos inside a `constructFilter` function in the factory config of [concrete implementations of the Facade](./facade.md#facade), the [Knex implementation allows this configuration function](https://github.com/js-entity-repos/knex#construct-the-facade) amongst others.
