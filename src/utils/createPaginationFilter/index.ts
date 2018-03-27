@@ -21,7 +21,7 @@ export default <E extends Entity>(pagination: Pagination, sort: Sort<E>): Filter
   if (pagination.cursor === end) {
     throw new PaginationFilterError();
   }
-  const cursor = pagination.cursor as string;
+  const cursor = pagination.cursor;
   const cursorObj = JSON.parse(atob(cursor));
   const filter = mapValues(cursorObj, (cursorValue, sortKey) => {
     const ascendingPagination = !xor(
