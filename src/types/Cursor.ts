@@ -1,6 +1,5 @@
 export const start = undefined;
-export const end = '';
 
-type Cursor = string | typeof start | typeof end;
+type Cursor = string | typeof start;
 
 export default Cursor;
