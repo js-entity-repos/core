@@ -49,22 +49,29 @@ Retreives a sorted paginated array of entities that match the [`filter`](./optio
 ```ts
 import { backward, forward } from '@js-entity-repos/core/dist/types/PaginationDirection';
 import { asc, desc } from '@js-entity-repos/core/dist/types/SortOrder';
+import { start } from '@js-entity-repos/core/dist/types/Cursor';
 
-const { entities, nextCursor, previousCursor } = await facade.getEntities({
+const firstForwardPage = await facade.getEntities({
   filter: { foo: 'demo' },
   sort: { id: asc, bar: desc },
-  pagination: { limit: 10, direction: forward, cursor: undefined },
+  pagination: { limit: 10, direction: forward, cursor: start },
 });
-const secondPage = await facade.getEntities({
-  filter: { foo: 'demo' },
-  sort: { id: asc, bar: desc },
-  pagination: { limit: 10, direction: forward, cursor: nextCursor },
-});
-const firstPage = await facade.getEntities({
-  filter: { foo: 'demo' },
-  sort: { id: asc, bar: desc },
-  pagination: { limit: 10, direction: backward, cursor: secondPage.previousCursor },
-});
+const firstPageEntities = firstForwardPage.entities;
+if (firstForwardPage.hasMoreForward) {
+  const secondForwardPage = await facade.getEntities({
+    filter: { foo: 'demo' },
+    sort: { id: asc, bar: desc },
+    pagination: { limit: 10, direction: forward, cursor: firstForwardPage.forwardCursor },
+  });
+  const secondPageEntities = secondForwardPage.entities;
+  if (secondForwardPage.hasMoreBackward) {
+    const firstPage = await facade.getEntities({
+      filter: { foo: 'demo' },
+      sort: { id: asc, bar: desc },
+      pagination: { limit: 10, direction: backward, cursor: secondForwardPage.backwardCursor },
+    });
+  }
+}
 ```
 
 This package contains the [get entities tests](../src/tests/getEntities) and the [get entities signature](../src/signatures/GetEntities.ts) for this function.

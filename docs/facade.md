@@ -15,6 +15,8 @@ This package also contains some utility functions outside of the Facade that you
 
 - [convertPropertyFilter](./utils.md#convertpropertyfilter)
 - [createCursorFromEntity](./utils.md#createcursorfromentity)
+- [createCursorsFromEntities](./utils.md#createcursorsfromentities)
+- [createGetEntitiesResult](./utils.md#creategetentitiesresult)
 - [createPaginationFilter](./utils.md#createpaginationfilter)
 
 The [facade in this package is a TypeScript interface](../src/Facade.ts), but concrete implementations of the interface are listed below.
