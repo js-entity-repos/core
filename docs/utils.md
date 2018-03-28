@@ -4,6 +4,8 @@ This package contains some common utility functions that can be used by both use
 
 - [convertPropertyFilter](#convertpropertyfilter)
 - [createCursorFromEntity](#createcursorfromentity)
+- [createCursorsFromEntities](#createcursorsfromentities)
+- [createGetEntitiesResult](#creategetentitiesresult)
 - [createPaginationFilter](#createpaginationfilter)
 
 ### convertPropertyFilter
@@ -21,48 +23,37 @@ convertPropertyFilter({
 ```
 
 ### createCursorFromEntity
-Exactly what it says on the tin, this creates a cursor from an entity. A cursor is constructed by creating a [filter](./options#filter) that will filter out entities not expected in the next set of paginated results. This filter is then stringified to JSON and base 64 encoded. This function is usually used by [concrete implementations of the Facade](./facade.md#facade) like [Knex's getEntities implementation](https://github.com/js-entity-repos/knex/blob/master/src/functions/getEntities.ts).. 
+Exactly what it says on the tin, this creates a cursor from an entity. A cursor is constructed by creating a [filter](./options#filter) that will filter out entities not expected in the next set of paginated results. This filter is then stringified to JSON and base 64 encoded. This function is usually used by the [`createCursorsFromEntities` util](#createcursorsfromentities). Check out the [`createCursorsFromEntities` implementation](../src/utils/createCursorsFromEntities/index.ts) for an example of its use.
 
-```ts
-import createCursorFromEntity from '@js-entity-repos/core/dist/utils/createCursorFromEntity';
-import { asc } from '@js-entity-repos/core/dist/types/SortOrder';
+### createCursorsFromEntities
+Creates a `forwardCursor` and a `backwardCursor` from an array of entities along with a sort and cursor. This function is usually used by the [`createGetEntitiesResult` util](#creategetentitiesresult). Check out the [`createGetEntitiesResult` implementation](../src/utils/createGetEntitiesResult/index.ts) for an example of its use.
 
-createCursorFromEntity(undefined, { id: asc });
-// Returns undefined
-
-createCursorFromEntity({
-  booleanProp: true,
-  id: 'test_id_1',
-  numberProp: 1,
-  stringProp: 'test_string_prop',
-}, {
-  id: asc,
-});
-// Returns eyJpZCI6InRlc3RfaWQifQ==
-```
+### createGetEntitiesResult
+This function is usually used by [concrete implementations of the Facade](./facade.md#facade) to construct the result for a request to get entities. Check out [Knex's getEntities implementation](https://github.com/js-entity-repos/knex/blob/master/src/functions/getEntities.ts) for an example of its use.
 
 ### createPaginationFilter
 Takes a [pagination option](./options#pagination) and a [sort option](./options#sort)) to produces a [filter](./options#filter) that can filter out entities not expected in the next set of paginated results. This function is usually used by [concrete implementations of the Facade](./facade.md#facade) like [Knex's getEntities implementation](https://github.com/js-entity-repos/knex/blob/master/src/functions/getEntities.ts).
 
 ```ts
 import createPaginationFilter from '@js-entity-repos/core/dist/utils/createPaginationFilter';
+import { start } from '@js-entity-repos/core/dist/types/Cursor';
 import { asc, desc } from '@js-entity-repos/core/dist/types/SortOrder';
 import { backward, forward } from '@js-entity-repos/core/dist/types/PaginationDirection';
 
 createPaginationFilter(
-  { cursor: undefined, direction: forward, limit: 1 },
+  { cursor: start, direction: forward, limit: 1 },
   { id: asc, numberProp: desc }
 );
 // Returns {}
 
 createPaginationFilter(
-  { cursor: nextCursor, direction: forward, limit: 1 },
+  { cursor: forwardCursor, direction: forward, limit: 1 },
   { id: asc, numberProp: desc }
 );
 // Returns the result of { id: { $gt: lastEntity.id }, numberProp: { $lte: lastEntity.numberProp } }
 
 createPaginationFilter(
-  { cursor: prevCursor, direction: backward, limit: 1 },
+  { cursor: backwardCursor, direction: backward, limit: 1 },
   { id: asc, numberProp: desc }
 );
 // Returns the result of { id: { $lt: firstEntity.id }, numberProp: { $gte: firstEntity.numberProp } }

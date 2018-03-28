@@ -1,8 +1,7 @@
 import 'mocha'; // tslint:disable-line:no-import-side-effect
 import * as assert from 'power-assert';
-import PaginationFilterError from '../../errors/PaginationFilterError';
 import { TestEntity, testEntity } from '../../tests/utils/testEntity';
-import { end, start } from '../../types/Cursor';
+import { start } from '../../types/Cursor';
 import { Filter } from '../../types/Filter';
 import Pagination from '../../types/Pagination';
 import { backward, forward } from '../../types/PaginationDirection';
@@ -19,16 +18,6 @@ describe('createCursorFromEntity', () => {
     const actualResult = createPaginationFilter<TestEntity>(pagination, sort);
     const expectedResult = {};
     assert.deepEqual(actualResult, expectedResult);
-  });
-
-  it('should return empty filter when the cursor is end', () => {
-    const pagination: Pagination = { cursor: end, direction: forward, limit: 1 };
-    try {
-      createPaginationFilter<TestEntity>(pagination, sort);
-      assert.fail();
-    } catch (err) {
-      assert.ok(err instanceof PaginationFilterError);
-    }
   });
 
   it('should return the correct filter when the cursor is defined and going forward', () => {

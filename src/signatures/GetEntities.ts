@@ -12,8 +12,10 @@ export interface Opts<E extends Entity> {
 
 export interface Result<E extends Entity> {
   readonly entities: E[];
-  readonly nextCursor: Cursor;
-  readonly previousCursor: Cursor;
+  readonly forwardCursor: Cursor;
+  readonly backwardCursor: Cursor;
+  readonly hasMoreForward: boolean;
+  readonly hasMoreBackward: boolean;
 }
 
 export type Signature<E extends Entity> = (opts: Opts<E>) => Promise<Result<E>>;

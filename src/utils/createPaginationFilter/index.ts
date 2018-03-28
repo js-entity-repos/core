@@ -1,7 +1,6 @@
 import * as atob from 'atob';
 import { get, mapValues } from 'lodash';
-import PaginationFilterError from '../../errors/PaginationFilterError';
-import { end, start } from '../../types/Cursor';
+import { start } from '../../types/Cursor';
 import Entity from '../../types/Entity';
 // tslint:disable-next-line:no-unused
 import Filter, { ConditionFilter, EntityFilter } from '../../types/Filter';
@@ -17,9 +16,6 @@ const xor = (conditionA: boolean, conditionB: boolean) => {
 export default <E extends Entity>(pagination: Pagination, sort: Sort<E>): Filter<E> => {
   if (pagination.cursor === start) {
     return {};
-  }
-  if (pagination.cursor === end) {
-    throw new PaginationFilterError();
   }
   const cursor = pagination.cursor;
   const cursorObj = JSON.parse(atob(cursor));
