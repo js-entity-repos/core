@@ -105,11 +105,11 @@ export default (opts: Opts) => {
 
   it('should filter correctly when using $search operator with lowercase', async () => {
     await createTestEntities();
-    await opts.assertFirstEntityFilter({ id: { $search: 'b' } });
+    await opts.assertFirstEntityFilter({ stringProp: { $search: 'b' } });
   });
 
   it('should filter correctly when using $search operator with uppercase', async () => {
     await createTestEntities();
-    await opts.assertFirstEntityFilter({ id: { $search: 'B' } });
+    await opts.assertFirstEntityFilter({ stringProp: { $search: 'B' } });
   });
 };
