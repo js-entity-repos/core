@@ -1,3 +1,4 @@
+// tslint:disable:max-file-line-count
 import 'mocha'; // tslint:disable-line:no-import-side-effect
 import Facade from '../../Facade';
 import Filter from '../../types/Filter';
@@ -13,8 +14,8 @@ export interface Opts {
 }
 export const firstId = 'test_id_1';
 export const secondId = 'test_id_2';
-export const firstEntity = { ...testEntity, id: firstId, stringProp: 'a', numberProp: 1 };
-export const secondEntity = { ...testEntity, id: secondId, stringProp: 'b', numberProp: 2 };
+export const firstEntity = { ...testEntity, id: firstId, stringProp: 'abc', numberProp: 1 };
+export const secondEntity = { ...testEntity, id: secondId, stringProp: 'def', numberProp: 2 };
 
 export default (opts: Opts) => {
   const createTestEntities = async () => {
@@ -39,17 +40,17 @@ export default (opts: Opts) => {
 
   it('should filter correctly when not using an operator', async () => {
     await createTestEntities();
-    await opts.assertFirstEntityFilter({ stringProp: 'a' });
+    await opts.assertFirstEntityFilter({ stringProp: firstEntity.stringProp });
   });
 
   it('should filter correctly when using $eq operator', async () => {
     await createTestEntities();
-    await opts.assertFirstEntityFilter({ stringProp: { $eq: 'a' } });
+    await opts.assertFirstEntityFilter({ stringProp: { $eq: firstEntity.stringProp } });
   });
 
   it('should filter correctly when using $ne operator', async () => {
     await createTestEntities();
-    await opts.assertFirstEntityFilter({ stringProp: { $ne: 'b' } });
+    await opts.assertFirstEntityFilter({ stringProp: { $ne: secondEntity.stringProp } });
   });
 
   it('should filter correctly when using $gt and $lt operators', async () => {
@@ -64,26 +65,51 @@ export default (opts: Opts) => {
 
   it('should filter correctly when using $in operator', async () => {
     await createTestEntities();
-    await opts.assertFirstEntityFilter({ stringProp: { $in: ['a'] } });
+    await opts.assertFirstEntityFilter({ stringProp: { $in: [firstEntity.stringProp] } });
   });
 
   it('should filter correctly when using $and operator', async () => {
     await createTestEntities();
-    await opts.assertFirstEntityFilter({ $and: [{ stringProp: 'a' }, { numberProp: 1 }] });
+    await opts.assertFirstEntityFilter({
+      $and: [
+        { stringProp: firstEntity.stringProp },
+        { numberProp: 1 },
+      ],
+    });
   });
 
   it('should filter correctly when using $or operator', async () => {
     await createTestEntities();
-    await opts.assertFirstEntityFilter({ $or: [{ stringProp: 'a' }, { numberProp: 1 }] });
+    await opts.assertFirstEntityFilter({
+      $or: [
+        { stringProp: firstEntity.stringProp },
+        { numberProp: 1 },
+      ],
+    });
   });
 
   it('should filter correctly when using $nor operator', async () => {
     await createTestEntities();
-    await opts.assertFirstEntityFilter({ $nor: [{ stringProp: 'b' }, { numberProp: 2 }] });
+    await opts.assertFirstEntityFilter({
+      $nor: [
+        { stringProp: secondEntity.stringProp },
+        { numberProp: 2 },
+      ],
+    });
   });
 
   it('should filter correctly when using $not operator', async () => {
     await createTestEntities();
-    await opts.assertFirstEntityFilter({ stringProp: { $not: { $eq: 'b' } } });
+    await opts.assertFirstEntityFilter({ stringProp: { $not: { $eq: secondEntity.stringProp } } });
+  });
+
+  it('should filter correctly when using $search operator with lowercase', async () => {
+    await createTestEntities();
+    await opts.assertFirstEntityFilter({ id: { $search: 'b' } });
+  });
+
+  it('should filter correctly when using $search operator with uppercase', async () => {
+    await createTestEntities();
+    await opts.assertFirstEntityFilter({ id: { $search: 'B' } });
   });
 };
