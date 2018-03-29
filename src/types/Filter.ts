@@ -10,6 +10,7 @@ export interface PropFilter<Prop> {
   readonly $eq?: Prop;
   readonly $ne?: Prop;
   readonly $not?: PropFilter<Prop>;
+  readonly $search?: Prop;
 }
 
 export type EntityFilter<E extends Entity> = {

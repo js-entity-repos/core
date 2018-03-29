@@ -54,6 +54,7 @@ Operator | Description
 [$gte](https://docs.mongodb.com/manual/reference/operator/query/gt/#op._S_gt) | Includes entities where the value of a given property is greater than or equal to the specified value.
 [$in](https://docs.mongodb.com/manual/reference/operator/query/in/#op._S_in) | Includes entities where the value of a given property is equal to one of the specified values.
 [$nin](https://docs.mongodb.com/manual/reference/operator/query/ni/#op._S_ni) | Includes entities where the value of a given property is not equal to any of the specified values.
+$search | Includes entities where the value of a given property contains the specified value as a substring.
 
 The filter below is comprehensive example using all of the operators.
 
@@ -72,6 +73,9 @@ The filter below is comprehensive example using all of the operators.
       "$and": [
         {
           "stringProp1": "string value 1",
+          "stringProp2": {
+            "$search": "string value 2"
+          },
           "numberProp2": {
             "$gte": 0,
             "$lte": 1
@@ -80,11 +84,11 @@ The filter below is comprehensive example using all of the operators.
           "numberProp4": { "$eq": 0 }
         },
         {
-          "stringProp2": {
-            "$in": ["string value 2", "string value 3"]
-          },
           "stringProp3": {
-            "$nin": ["string value 4", "string value 5"]
+            "$in": ["string value 3", "string value 4"]
+          },
+          "stringProp4": {
+            "$nin": ["string value 5", "string value 6"]
           }
         }
       ]
@@ -93,7 +97,7 @@ The filter below is comprehensive example using all of the operators.
     {
       "$nor": [
         {
-          "stringProp4": "string value 6"
+          "stringProp5": "string value 7"
         }
       ]
     }
