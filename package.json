@@ -35,7 +35,7 @@
     "@ht2-labs/typescript-project": "1.0.10",
     "@types/lodash": "4.14.106",
     "@types/mocha": "5.0.0",
-    "@types/power-assert": "1.4.29",
+    "@types/power-assert": "1.5.0",
     "assert-rejects": "0.1.1",
     "jscpd": "0.6.17",
     "mocha": "5.0.5",
