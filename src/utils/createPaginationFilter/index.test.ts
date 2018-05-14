@@ -11,7 +11,7 @@ import createCursorFromEntity from '../createCursorFromEntity';
 import createPaginationFilter from './index';
 
 describe('createCursorFromEntity', () => {
-  const sort: Sort<TestEntity> = { id: asc, numberProp: desc };
+  const sort: Sort<TestEntity> = { numberProp: desc, id: asc };
 
   it('should return empty filter when the cursor is start', () => {
     const pagination: Pagination = { cursor: start, direction: forward, limit: 1 };
@@ -25,8 +25,12 @@ describe('createCursorFromEntity', () => {
     const pagination: Pagination = { cursor, direction: forward, limit: 1 };
     const actualResult = createPaginationFilter<TestEntity>(pagination, sort);
     const expectedResult: Filter<TestEntity> = {
-      id: { $gt: testEntity.id },
-      numberProp: { $lte: testEntity.numberProp },
+      $or: [{
+        numberProp: { $lte: testEntity.numberProp },
+      }, {
+        id: { $gt: testEntity.id },
+        numberProp: testEntity.numberProp,
+      }],
     };
     assert.deepEqual(actualResult, expectedResult);
   });
@@ -36,8 +40,12 @@ describe('createCursorFromEntity', () => {
     const pagination: Pagination = { cursor, direction: backward, limit: 1 };
     const actualResult = createPaginationFilter<TestEntity>(pagination, sort);
     const expectedResult: Filter<TestEntity> = {
-      id: { $lt: testEntity.id },
-      numberProp: { $gte: testEntity.numberProp },
+      $or: [{
+        numberProp: { $gte: testEntity.numberProp },
+      }, {
+        id: { $lt: testEntity.id },
+        numberProp: testEntity.numberProp,
+      }],
     };
     assert.deepEqual(actualResult, expectedResult);
   });
