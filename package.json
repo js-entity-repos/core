@@ -39,7 +39,7 @@
     "assert-rejects": "0.1.1",
     "jscpd": "0.6.18",
     "mocha": "5.2.0",
-    "nyc": "11.8.0",
+    "nyc": "11.9.0",
     "power-assert": "1.5.0",
     "rimraf": "2.6.2"
   },
