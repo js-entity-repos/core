@@ -34,7 +34,7 @@
     "@ht2-labs/semantic-release": "1.0.42",
     "@ht2-labs/typescript-project": "1.0.18",
     "@types/lodash": "4.14.109",
-    "@types/mocha": "5.2.1",
+    "@types/mocha": "5.2.2",
     "@types/power-assert": "1.5.0",
     "assert-rejects": "0.1.1",
     "jscpd": "0.6.18",
