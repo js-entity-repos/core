@@ -37,7 +37,7 @@
     "@types/mocha": "5.2.2",
     "@types/power-assert": "1.5.0",
     "assert-rejects": "0.1.1",
-    "jscpd": "0.6.21",
+    "jscpd": "0.6.22",
     "mocha": "5.2.0",
     "nyc": "11.9.0",
     "power-assert": "1.6.0",
