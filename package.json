@@ -33,7 +33,7 @@
   "devDependencies": {
     "@ht2-labs/semantic-release": "1.1.68",
     "@ht2-labs/typescript-project": "1.1.0",
-    "@types/lodash": "4.14.125",
+    "@types/lodash": "4.14.126",
     "@types/mocha": "5.2.6",
     "@types/power-assert": "1.5.0",
     "assert-rejects": "0.1.1",
