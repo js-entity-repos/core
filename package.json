@@ -41,7 +41,7 @@
     "mocha": "5.2.0",
     "nyc": "11.9.0",
     "power-assert": "1.6.1",
-    "rimraf": "2.6.3"
+    "rimraf": "2.7.0"
   },
   "publishConfig": {
     "access": "public"
