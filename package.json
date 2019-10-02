@@ -36,7 +36,7 @@
     "@types/lodash": "4.14.141",
     "@types/mocha": "5.2.7",
     "@types/power-assert": "1.5.0",
-    "assert-rejects": "0.1.1",
+    "assert-rejects": "1.0.0",
     "jscpd": "0.6.25",
     "mocha": "5.2.0",
     "nyc": "11.9.0",
