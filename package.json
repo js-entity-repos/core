@@ -34,11 +34,11 @@
     "@ht2-labs/semantic-release": "1.1.76",
     "@ht2-labs/typescript-project": "1.1.0",
     "@types/lodash": "4.14.141",
-    "@types/mocha": "5.2.7",
+    "@types/mocha": "7.0.2",
     "@types/power-assert": "1.5.0",
     "assert-rejects": "0.1.1",
     "jscpd": "0.6.25",
-    "mocha": "5.2.0",
+    "mocha": "7.1.2",
     "nyc": "11.9.0",
     "power-assert": "1.6.1",
     "rimraf": "2.7.1"
